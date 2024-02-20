@@ -1,0 +1,79 @@
+body{
+    background-color: beige;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+header{
+    padding: 10px;
+    margin: 0;
+    background-color: rgb(197, 197, 105);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px black;
+
+}
+img{
+     box-shadow: 2px 2px 2px black;
+}
+nav{
+    padding: 10px;
+    background-color: rgb(177, 177, 88);
+    color: white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px black;
+}
+nav a{
+    text-decoration: none;
+    margin: 0, 10px;
+
+}
+p{
+    background-color: rgb(230, 230, 206);
+    font-size: 20px;
+
+}
+#g{
+    background-color: gainsboro;
+    color: black;
+
+}
+#back{
+    float: right;
+
+
+}
+#back1{
+    background-color: crimson;
+    color: white;
+
+}
+#SUlink{
+    background-color: lightskyblue;
+    font-size: xx-large;
+
+}
+button{
+    border-radius: 10px;
+}
+details {
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    summary {
+      background-color: rgb(177, 177, 88);
+      padding: 10px;
+      cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px black;
+    }
+
+    /* Style for the content inside the collapsible group */
+    div.collapsible-content {
+      padding: 10px;
+      background-color: rgb(230, 230, 206);
+    }
