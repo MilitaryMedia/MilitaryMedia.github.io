@@ -55,6 +55,13 @@ p{
 }
 button{
     border-radius: 10px;
+    border: 0px;
+}
+#secret{
+    background-color: beige;
+}
+#secret:hover{
+    background-color: white;
 }
 details {
       border-radius: 4px;
