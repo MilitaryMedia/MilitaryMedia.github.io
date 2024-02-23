@@ -56,12 +56,14 @@ p{
 button{
     border-radius: 10px;
 }
-#secret{
+.secret-b{
     background-color: beige;
+    color: beige;
     border: 0px;
 }
-#secret:hover{
+.secret-b:hover{
     background-color: white;
+    color: black;
     transform: 0.7s;
 }
 details {
