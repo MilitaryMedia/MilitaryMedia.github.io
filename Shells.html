@@ -5,12 +5,41 @@
         <meta charset="utf-8">
         <link rel="icon" type="image/png" href="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+/* The progress container (grey background) */
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #ccc;
+}
+
+/* The progress bar (scroll indicator) */
+.progress-bar {
+  height: 8px;
+  background: #04AA6D;
+  width: 0%;
+}
+        </style>
         <title>Military Media | Types of Shells</title>
     </head>
     <body style="text-align: center;">
         <header>
             <h1>Types of Shells<a id="back" href="index.html"><button id="back1">Back</button></a></h1>
         </header>
+        <div class='header'>
+            <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>
+</div>
+    </div>
         <br>
         <details>
   <summary style="font-size: 20px;">AP</summary>
@@ -121,6 +150,16 @@
 </p>
   </div>
 </details>
+        <script>
+            window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+}
+        </script>
 
       <footer>
             <h3>&copy;Anthony & Matthew</h3>
