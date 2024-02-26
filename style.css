@@ -1,11 +1,11 @@
 body{
-    background-color: beige;
+    background-color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 header{
     padding: 10px;
     margin: 0;
-    background-color: rgb(197, 197, 105);
+    background-color: rgb(68, 189, 236);
     font-family: 'Courier New', Courier, monospace;
     font-size: 25px;
     color: white;
@@ -18,7 +18,7 @@ img{
 }
 nav{
     padding: 10px;
-    background-color: rgb(177, 177, 88);
+    background-color: rgb(32, 177, 235);
     color: white;
     border-radius: 20px;
     box-shadow: 2px 2px 2px black;
@@ -29,7 +29,7 @@ nav a{
 
 }
 p{
-    background-color: rgb(230, 230, 206);
+    background-color: gainsboro;
     font-size: 20px;
 
 }
@@ -58,8 +58,8 @@ button{
 }
 
 .secret-b{
-    background-color: beige;
-    color: beige;
+    background-color: white;
+    color: white;
     border: 0px;
     transition: 2s;
 }
@@ -73,7 +73,7 @@ details {
     }
 
     summary {
-      background-color: rgb(177, 177, 88);
+      background-color: rgb(32, 177, 235);
       padding: 10px;
       cursor: pointer;
     font-family: 'Courier New', Courier, monospace;
@@ -86,5 +86,5 @@ details {
     /* Style for the content inside the collapsible group */
     div.collapsible-content {
       padding: 10px;
-      background-color: rgb(230, 230, 206);
+      background-color: gainsboro;
     }
