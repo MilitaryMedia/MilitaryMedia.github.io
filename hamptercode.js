@@ -11,4 +11,4 @@ function onHampterCode(cb) {
   });
 }
 
-onHampterCode(function () {window.location.href = "Hamster2.jpg";})
+onHampterCode(function () {window.location.href = "Hamster2.jpg" download;})
