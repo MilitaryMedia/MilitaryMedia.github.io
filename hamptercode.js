@@ -1,6 +1,6 @@
 function onHampterCode(cb) {
   var input = '';
-  var key = '//insert here';
+  var key = '72657780846982';
   document.addEventListener('keydown', function (e) {
     input += ("" + e.keyCode);
     if (input === key) {
@@ -11,4 +11,4 @@ function onHampterCode(cb) {
   });
 }
 
-onHampterCode(function () {window.location.href = "https://militarymedia.github.io/Hampter.html";})
+onHampterCode(function () {window.location.href = "Hamster2.jpg";})
