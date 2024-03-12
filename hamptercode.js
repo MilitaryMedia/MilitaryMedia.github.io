@@ -1,6 +1,6 @@
 function onHampterCode(cb) {
   var input = '';
-  var key = '72657780846982';
+  var key = '7265778084698213';
   document.addEventListener('keydown', function (e) {
     input += ("" + e.keyCode);
     if (input === key) {
