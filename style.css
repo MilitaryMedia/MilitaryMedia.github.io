@@ -4,7 +4,7 @@ body{
 }
 header{
     padding: 5px;
-    background-color: rgb(68, 189, 236);
+    background-color: rgb(255, 0, 0);
     font-family: 'Courier New', Courier, monospace;
     font-size: 25px;
     text-shadow: 0 0 5px #000000, 0 0 6px #000000;
@@ -17,7 +17,7 @@ img{
 nav{
     padding: 10px;
 	margin: 10px;
-    background-color: rgb(32, 177, 235);
+    background-color: rgb(185, 0, 0);
     color: white;
     border-radius: 20px;
     box-shadow: 2px 2px 2px black;
@@ -52,7 +52,7 @@ details {
     }
 
     summary {
-      background-color: rgb(32, 177, 235);
+      background-color: rgb(185, 0, 0);
       padding: 10px;
       cursor: pointer;
     font-family: 'Courier New', Courier, monospace;
