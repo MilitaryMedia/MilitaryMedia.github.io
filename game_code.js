@@ -11,4 +11,4 @@ function onKonamiCode(cb) {
   });
 }
 
-onKonamiCode(function () {window.location.href = "https://militarymedia.github.io/games.html";})
+onKonamiCode(function () {window.location.href = "https://militarymedia.github.io/Games.html";})
