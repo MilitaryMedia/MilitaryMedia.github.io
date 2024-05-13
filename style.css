@@ -4,6 +4,7 @@ body{
 }
 header{
     padding: 5px;
+    /*The main color theme for the website*/
     background-color: rgb(255, 0, 0);
     font-family: 'Courier New', Courier, monospace;
     font-size: 25px;
@@ -11,16 +12,12 @@ header{
     color: white;
 
 }
-img{
-     box-shadow: 2px 2px 2px black;
-}
 nav{
     padding: 10px;
 	margin: 10px;
     background-color: rgb(185, 0, 0);
     color: white;
     border-radius: 20px;
-    box-shadow: 2px 2px 2px black;
 }
 nav a{
     text-decoration: none;
@@ -58,7 +55,6 @@ details {
     font-size: 15px;
     color: white;
     border-radius: 20px;
-    box-shadow: 2px 2px 2px black;
     }
 
     /* Style for the content inside the collapsible group */
