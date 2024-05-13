@@ -11,4 +11,4 @@ function onSecretCode(cb) {
   });
 }
 
-onSecretCode(function () {window.location.href = "https://militarymedia.github.io/Hamster2.jpg";})
+onSecretCode(function () {window.location.href = "https://militarymedia.github.io/derp.html";})
