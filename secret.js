@@ -1,6 +1,6 @@
 function onSecretCode(cb) {
-  var input = '';
-  var key = '84189515213';
+  var input = '75865013';
+  var key = '';
   document.addEventListener('keydown', function (e) {
     input += ("" + e.keyCode);
     if (input === key) {
