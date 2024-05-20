@@ -1,6 +1,6 @@
 function textChanger(input)
     {
-        document.getElementById(input).textContent = "Go!";
+        document.getElementById(input).textContent = 'Go to '+input;
     }
     
 function textReverter(input)
