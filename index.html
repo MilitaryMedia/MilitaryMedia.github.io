@@ -7,35 +7,55 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
             <style>
-                  html { height: 100% }
-      body { height: 100%; margin: 0px; }
+                html{
+                height: 100%
+                }
+                body{
+                height: 100%; margin: 0px;
+                }
+                button:hover{
+                    background-color: rgb(49, 44, 44);
+                    color: white;
+                }
+                #loader {
+                    width: 100%;
+                    height: 100%;
+                    background-color: white;
+                    margin: 0;
+                }
         </style>
   
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <title>Military Media | Home</title>
+       <!-- <script>
+        $(window).load(function() {      //Do the code in the {}s when the window has loaded 
+            $("#loader").fadeOut("fast");  //Fade out the #loader div
+          });
+          </script> -->
     </head>
     <body style="text-align: center;">
+   <!-- <div id="loader"><img src='loader.gif'></div> -->
         <header>
             <img style="float: left; border-radius: 3px;" width="100" height="100" src="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" alt="Icon">
             <h1 style="text-shadow: 0 0 5px #000000, 0 0 6px #000000;">Military Media</h1>
         </header>
         <br>
-            <a href="America.html"><button>America</button></a>
-            <a href="Germany.html"><button>Germany</button></a>
-            <a href="SovietUnion.html"><button>Soviet Union</button></a>
-            <a href="Italy.html"><button>Italy</button></a>
-            <a href="france.html"><button>France</button></a>
-            <a href="china.html"><button>China</button></a>
-            <a href="Japan.html"><button>Japan</button></a>
-            <a href="Sweeden.html"><button>Sweden</button></a>
+            <a href="America.html"><button id="America" onmouseover="textChanger('America')" onmouseleave="textReverter('America')">America</button></a>
+            <a href="Germany.html"><button id="Germany" onmouseover="textChanger('Germany')" onmouseleave="textReverter('Germany')">Germany</button></a>
+            <a href="SovietUnion.html"><button id="Soviet Union" onmouseover="textChanger('Soviet Union')" onmouseleave="textReverter('Soviet Union')">Soviet Union</button></a>
+            <a href="Italy.html"><button id="Italy" onmouseover="textChanger('Italy')" onmouseleave="textReverter('Italy')">Italy</button></a>
+            <a href="france.html"><button id="France" onmouseover="textChanger('France')" onmouseleave="textReverter('France')">France</button></a>
+            <a href="china.html"><button id="China" onmouseover="textChanger('China')" onmouseleave="textReverter('China')">China</button></a>
+            <a href="Japan.html"><button id="Japan" onmouseover="textChanger('Japan')" onmouseleave="textReverter('Japan')">Japan</button></a>
+            <a href="Sweeden.html"><button id="Sweden" onmouseover="textChanger('Sweden')" onmouseleave="textReverter('Sweden')">Sweden</button></a>
         <br>
         <br>
-            <a href="Classification.html"><button>Classification of Tanks</button></a>
-            <a href="History.html"><button>History of Tanks</button></a>
-            <a href="Shells.html"><button>Types of Shells</button></a>
-            <a href="Sloped_How.html"><button>How Does Sloped Armor Work?</button></a>
-            <a href="sherman.html"><button>Shermans</button></a>
-            <a href="War.html"><button>Wars</button></a>
+            <a href="Classification.html"><button id="Classification of Tanks" onmouseover="textChanger('Classification of Tanks')" onmouseleave="textReverter('Classification of Tanks')">Classification of Tanks</button></a>
+            <a href="History.html"><button id="History of Tanks" onmouseover="textChanger('History of Tanks')" onmouseleave="textReverter('History of Tanks')">History of Tanks</button></a>
+            <a href="Shells.html"><button id="Types of Shells" onmouseover="textChanger('Types of Shells')" onmouseleave="textReverter('Types of Shells')">Types of Shells</button></a>
+            <a href="Sloped_How.html"><button id="How Does Sloped Armor Work?" onmouseover="textChanger('How Does Sloped Armor Work?')" onmouseleave="textReverter('How Does Sloped Armor Work?')">How Does Sloped Armor Work?</button></a>
+            <a href="sherman.html"><button id="Shermans" onmouseover="textChanger('Shermans')" onmouseleave="textReverter('Shermans')">Shermans</button></a>
+            <a href="War.html"><button id="Wars" onmouseover="textChanger('Wars')" onmouseleave="textReverter('Wars')">Wars</button></a>
         <p>
             Welcome to our website dedicated to tanks - the armored vehicles that have played a significant role in military history. 
             Tanks have been used in warfare for over a century, and their design and capabilities have evolved significantly over time. 
@@ -50,10 +70,11 @@
         <script src="hamptercode.js"></script>
         <script src="secret.js"></script>
         <script src="game_code.js"></script>
-         <script src="sheepy_activator.js"></script>
+        <script src="index.js"></script>
+   <!-- <script src="sheepy_activator.js"></script> -->
         <footer>
             <h3>Anthony, Matthew, and Nick</h3>
-            <a href="About.html"><button>About</button></a>
+            <a href="About.html"><button id="About Us" onmouseover="textChanger('About Us')" onmouseleave="textReverter('About Us')">About Us</button></a>
         </footer>
     </body>
 </html>
