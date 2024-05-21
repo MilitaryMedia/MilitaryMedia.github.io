@@ -18,5 +18,5 @@ id="Insert" onmouseover="textChanger('Insert')" onmouseleave="textReverter('Inse
 
 function secretMessageButton1()
 {
-    document.getElementById(secretMessage1).style.display = 'block';
+    document.getElementById('secretMessage1').style.display = 'block';
 }
