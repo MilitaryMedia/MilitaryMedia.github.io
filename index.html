@@ -72,14 +72,19 @@
         <footer>
             <h3>Anthony, Matthew, and Nick</h3>
             <a href="About.html"><button id="About Us" onmouseover="textChanger('About Us')" onmouseleave="textReverter('About Us')">About Us</button></a>
-            <a href="squish-hampter.jpg" download><button id="secretButton1" style="display: none;">DO NOT PRESS!</button></a>
+            <p id="Message" style="display: none;">No secret here. Nice try.</p>
+            <a href="squish-hampter.jpg" download=""><button id="secretButton1" style="display: none;">DO NOT PRESS!</button></a>
             <p ><span id="clicks" style="display: none;">Yo good job. You hit </span>
                <div id="cursorBuy" style="display: none;">
+                <img onclick="secretMessageButton1(1)" src="click-hampter.jpg">
+                <br>
                 <button onclick="buyCursor()">Buy Cursor</button>
                 <br>
                 Cursors: <span id="cursors">0</span>
                 <br>
                 <p>Cursor Cost: <span id="cursorCost">10</span></p>
+                <button onclick='save()'>Save</button>
+                <button onclick='load()'>Load</button>
         </div>
             </footer>
     </body>
