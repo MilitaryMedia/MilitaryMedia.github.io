@@ -18,6 +18,7 @@ id="Insert" onmouseover="textChanger('Insert')" onmouseleave="textReverter('Inse
 var click = 0;
 var message0 = 0;
 var message1 = 0;
+var cursor = 0;
 
 function prettify(input){
     var output = Math.round(input * 1000000)/1000000;
@@ -54,7 +55,7 @@ function buyCursor(){
         cursors = cursors + 1;                                   //increases number of cursors
     	click = click - cursorCost;                          //removes the cookies spent
         document.getElementById('cursors').innerHTML = prettify(cursors);  //updates the number of cursors for the user
-        document.getElementById('cookies').innerHTML = prettify(click);  //updates the number of cookies for the user
+        document.getElementById('clicks').innerHTML = prettify(click);  //updates the number of cookies for the user
     };
     var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
     document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
