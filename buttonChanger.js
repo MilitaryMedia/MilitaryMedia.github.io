@@ -48,7 +48,7 @@ function secretMessageButton1(input)
         document.getElementById('clicks').innerHTML = 'you are at ' + click +' clicks.'
     }
 }
-var cursors = 0;
+
 function buyCursor(){
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));     //works out the cost of this cursor
     if(click >= cursorCost){                                   //checks that the player can afford the cursor
