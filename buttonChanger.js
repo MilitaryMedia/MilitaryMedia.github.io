@@ -23,7 +23,11 @@ function prettify(input){
     var output = Math.round(input * 1000000)/1000000;
 	return output;
 }
-function logoclick() {document.getElementById('Message').style.display = 'block';}
+function logoclick()
+{
+    document.getElementById('Message').style.display = 'block';
+    
+}
 function secretMessageButton1(input){
     click = click + input;
     document.getElementById("clicks").innerHTML = prettify(click);
@@ -61,15 +65,14 @@ window.setInterval(function(){
 function save(){
     var save = {
          click:click,
-         cursors:cursors,
-         cursorCost:cursorCost
+         cursors:cursors
     }
        localStorage.setItem("save",JSON.stringify(save));
   };
   function load(){
   var savegame = JSON.parse(localStorage.getItem("save"));
        if (typeof savegame.click !== "undefined") click = savegame.click;
-  document.getElementById("clicks").innerHTML = prettify(click);
+  document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks.";
   if (typeof savegame.cursors !== "undefined") cursors = savegame.cursors;
   document.getElementById("cursors").innerHTML = prettify(cursors);
   //if (typeof savegame.cursorCost !== "undefined") cursorCost = savegame.cursorCost;
