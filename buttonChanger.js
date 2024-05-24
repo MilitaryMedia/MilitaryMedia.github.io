@@ -59,7 +59,7 @@ function buyCursor(){
 window.setInterval(function(){
 	
 	secretMessageButton1(cursors);
-	
+	document.getElementById('hampter_clicker').style.animation="shake 0.1s"
 }, 1000);
 
 function save(){
