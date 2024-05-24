@@ -45,10 +45,11 @@ function secretMessageButton1(input){
 
 function buyCursor(){
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));     //works out the cost of this cursor
-    if(click >= cursorCost){                                   //checks that the player can afford the cursor
+    if(click >= cursorCost){
+        document.getElementById('cursor_img').style.display = 'block';                                   //checks that the player can afford the cursor
         cursors = cursors + 1;                                   //increases number of cursors
     	click = click - cursorCost;                          //removes the click spent
-        document.getElementById('cursors').innerHTML = prettify(cursors);  //updates the number of cursors for the user
+        document.getElementById('cursors').innerHTML = prettify(cursors) + 'x';  //updates the number of cursors for the user
         document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
         var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
@@ -74,9 +75,10 @@ function save(){
        if (typeof savegame.click !== "undefined") click = savegame.click;
   document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks.";
   if (typeof savegame.cursors !== "undefined") cursors = savegame.cursors;
-  document.getElementById("cursors").innerHTML = prettify(cursors);
+  document.getElementById("cursors").innerHTML = prettify(cursors) + 'x';
   //if (typeof savegame.cursorCost !== "undefined") cursorCost = savegame.cursorCost;
   //document.getElementById("cursorCost").innerHTML = cursorCost;
+  if (cursors >= 1) document.getElementById('cursor_img').style.display = 'block';
   var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
   };
