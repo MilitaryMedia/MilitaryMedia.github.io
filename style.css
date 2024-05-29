@@ -10,7 +10,10 @@ header{
     font-size: 25px;
     text-shadow: 0 0 5px #000000, 0 0 6px #000000;
     color: white;
-
+    /*
+    position: sticky;
+    top:0;
+    */
 }
 nav{
     padding: 10px;
