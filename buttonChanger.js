@@ -18,6 +18,7 @@ id="Insert" onmouseover="textChanger('Insert')" onmouseleave="textReverter('Inse
 var click = 0;
 var message1 = 0;
 var cursors = 0;
+var wheel = 0;
 
 function prettify(input){
     var output = Math.round(input * 1000000)/1000000;
@@ -54,7 +55,18 @@ function buyCursor(){
         var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
     };
-    
+}    
+function buyWheel(){
+        var WheelCost = Math.floor(100 * Math.pow(1.1,wheel));     //works out the cost of this cursor
+        if(click >= WheelCost){
+            document.getElementById('wheel_img').style.display = 'block';                                   //checks that the player can afford the cursor
+            wheel = wheel + 1;                                   //increases number of cursors
+            click = click - WheelCost;                          //removes the click spent
+            document.getElementById('wheel').innerHTML = prettify(wheel) + 'x';  //updates the number of cursors for the user
+            document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+            var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
+            document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
+        };
 };
 
 window.setInterval(function(){
@@ -62,11 +74,15 @@ window.setInterval(function(){
 	secretMessageButton1(cursors);
 	//document.getElementById('hampter_clicker').style.animation="shake 0.1s"
 }, 1000);
+window.setInterval(function(){
+secretMessageButton1(wheel);
+}, 200)
 
 function save(){
     var save = {
          click:click,
-         cursors:cursors
+         cursors:cursors,
+         wheel:wheel
     }
        localStorage.setItem("save",JSON.stringify(save));
   };
@@ -81,6 +97,11 @@ function save(){
   if (cursors >= 1) document.getElementById('cursor_img').style.display = 'block';
   var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
+if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
+  document.getElementById("wheel").innerHTML = wheel;
+  if (wheel >= 1) document.getElementById('wheel_img').style.display = 'block';
+  var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
+  document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
   };
 
   function onClickCode(cb) {
@@ -97,3 +118,4 @@ function save(){
   }
   
   onClickCode(function () {secretMessageButton1(1)})
+
