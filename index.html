@@ -40,8 +40,17 @@
   90% { transform: translate(1px, 2px) rotate(0deg) scale(0.9); }
   100% { transform: translate(1px, -2px) rotate(-1deg) scale(0.95); }
 }
+@keyframes clicker {
+    0% { transform: translate(-5px, 0px)}
+    20% { transform: translate(0px, 0px)}
+}
+#mouse {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: clicker 1s;
 
-                
+/* When the animation is finished, start again */
+animation-iteration-count: infinite;
+}                
         </style>
   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -103,12 +112,12 @@
                 <br>
                 <button onclick="buyCursor()">Buy Clicker</button>
                 <br>
-                <p style='display: none;' id=cursor_img>Clickers: <img src="https://m.media-amazon.com/images/I/61IHl1PNgPL._AC_UF894,1000_QL80_.jpg" width="55px" height="36px"><span id="cursors">0</span></p>
+                <p style='display: none;' id=cursor_img>Clickers: <img id="mouse" src="https://m.media-amazon.com/images/I/61IHl1PNgPL._AC_UF894,1000_QL80_.jpg" width="55px" height="36px"><span id="cursors">0</span></p>
                 <br>
                 <p>Clicker Cost: <span id="cursorCost">10</span></p>
                 <br>
                 <button onclick="buyWheel()">Buy Wheel</button>
-                <p style="display: none;" id="wheel_img">Wheels: <img src="hamster_wheel.gif" width="55px" height="36px"><span id="wheel">0</span></p>
+                <p style="display: none;" id="wheel_img">Wheels: <img id="hampter_gif" src="hamster_wheel.gif" width="55px" height="36px"><span id="wheel">0</span></p>
                 <br>Wheel Cost: <span id="wheelCost">100</span></p>
                 <button onclick='save()'>Save</button>
                 <button onclick='load()'>Load</button>
