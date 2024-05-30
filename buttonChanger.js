@@ -19,6 +19,10 @@ var click = 0;
 var message1 = 0;
 var cursors = 0;
 var wheel = 0;
+/* following is part of template just replace "NEW_ITEM" with new item name */
+/*
+var NEW_ITEM = 0;
+*/
 
 function prettify(input){
     var output = Math.round(input * 1000000)/1000000;
@@ -68,6 +72,21 @@ function buyWheel(){
             document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
         };
 };
+/* Following is part of template, replace "NEW_ITEM" with item name and "STARTING_COST" with starting cost of item */
+/*
+function buyNEW_ITEM(){
+        var NEW_ITEMCost = Math.floor(STARTING_COST * Math.pow(1.1,NEW_ITEM));     //works out the cost of this cursor
+        if(click >= NEW_ITEMCost){
+            document.getElementById('NEW_ITEM_img').style.display = 'block';                                   //checks that the player can afford the cursor
+            NEW_ITEM = NEW_ITEM + 1;                                   //increases number of cursors
+            click = click - NEW_ITEMCost;                          //removes the click spent
+            document.getElementById('NEW_ITEM').innerHTML = prettify(NEW_ITEM) + 'x';  //updates the number of cursors for the user
+            document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+            var NEW_ITEMnextCost = Math.floor(STARTING_COST * Math.pow(1.1,NEW_ITEM));       //works out the cost of the next cursor
+            document.getElementById('NEW_ITEMCost').innerHTML = prettify(NEW_ITEMnextCost);  //updates the cursor cost for the user
+        };
+};
+*/
 
 window.setInterval(function(){
 	
@@ -78,11 +97,21 @@ window.setInterval(function(){
 secretMessageButton1(wheel);
 }, 200)
 
+/* following is part of template, replace "NEW_ITEM" with item name, replace "TIME_PER_CLICK" with the delay before you want to get 1 click (in milliseconds). */
+/*
+window.setInterval(function(){
+    secretMessageButton1(NEW_ITEM);
+    }, TIME_PER_CLICK)
+*/
+
 function save(){
     var save = {
          click:click,
          cursors:cursors,
-         wheel:wheel
+         wheel:wheel// ADD COMMA WHEN ADD NEW ITEM BELOW
+         /*
+         NEW_ITEM:NEW_ITEM 
+         */
     }
        localStorage.setItem("save",JSON.stringify(save));
   };
@@ -102,6 +131,14 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   if (wheel >= 1) document.getElementById('wheel_img').style.display = 'block';
   var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
   document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
+  /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
+  /*
+    if (typeof savegame.NEW_ITEM !== "undefined") NEW_ITEM = savegame.NEW_ITEM;
+  document.getElementById("NEW_ITEM").innerHTML = NEW_ITEM;
+  if (NEW_ITEM >= 1) document.getElementById('NEW_ITEM_img').style.display = 'block';
+  var NEW_ITEMnextCost = Math.floor(STARTING_COST * Math.pow(1.1,NEW_ITEM));       //works out the cost of the next cursor
+  document.getElementById('NEW_ITEMCost').innerHTML = prettify(NEW_ITEMnextCost);  //updates the cursor cost for the user
+  */
   };
 
   function onClickCode(cb) {
@@ -109,7 +146,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
     var key = '13161316';
     document.addEventListener('keydown', function (e) {
       input += ("" + e.keyCode);
-      if (input === key) {
+      if (input === key) { // anthony ignore the fact that it says depreciated, it still works
         return cb();
       }
       if (!key.indexOf(input)) return;
