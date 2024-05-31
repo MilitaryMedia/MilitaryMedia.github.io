@@ -110,15 +110,17 @@ animation-iteration-count: infinite;
                <div id="cursorBuy" style="display: none;">
                 <img id='hampter_clicker' onclick="secretMessageButton1(1)" src="click-hampter.jpg">
                 <br>
-                <button onclick="buyCursor()">Buy Clicker</button>
                 <br>
                 <p style='display: none;' id=cursor_img>Clickers: <img id="mouse" src="https://m.media-amazon.com/images/I/61IHl1PNgPL._AC_UF894,1000_QL80_.jpg" width="55px" height="36px"><span id="cursors">0</span></p>
-                <br>
                 <p>Clicker Cost: <span id="cursorCost">10</span></p>
+                <button  id="clickerBuy" onclick="buyCursor()">Buy Clicker</button>
                 <br>
-                <button onclick="buyWheel()">Buy Wheel</button>
+                <br>
                 <p style="display: none;" id="wheel_img">Wheels: <img id="hampter_gif" src="hamster_wheel.gif" width="110px" height="72px"><span id="wheel">0</span></p>
-                <br>Wheel Cost: <span id="wheelCost">100</span></p>
+                <p>Wheel Cost: <span id="wheelCost">100</span></p>
+                <button id="wheelBuy" onclick="buyWheel()">Buy Wheel</button>
+                <br>
+                <br>
                 <!--     The following is a template for a new item. ctrl + h and replace all "NEW_ITEM" in that section with the name for it. use the same name in the js file too or it will not work. also replace "NEW_IMG" with the url for the new image and the "NEW_IMG_ID" with the new id.-->
                 <!--
                     
@@ -126,8 +128,22 @@ animation-iteration-count: infinite;
                 <p style="display: none;" id="NEW_ITEM_img">NEW_ITEM: <img id="NEW_IMG_ID" src="NEW_IMG" width="55px" height="36px"><span id="NEW_ITEM">0</span></p>
                 <br>NEW_ITEM Cost: <span id="NEW_ITEMCost">100</span></p>    
                 -->
-                <button onclick='save()'>Save</button>
-                <button onclick='load()'>Load</button>
+                <button onclick='save()'>Save(local)</button>
+                <button onclick='load()'>Load(local)</button>
+                <button onclick="export2txt()">Save(File)</button>
+           <!-- <button onclick="loadFile()">Load(File)</button> -->
+           <input type="file" name="inputfile" id="inputfile"><button onclick="importfile()">Load file</button>
+           <br>
+       
+          <!--<script type="text/javascript">
+               document.getElementById('inputfile')
+                   .addEventListener('change', function () {
+       
+                       let fr = new FileReader();
+                       const import_save = fr.result.split(" ");       
+                       //fr.readAstext(this.files[0]);
+                   })
+           </script>-->
         </div>
             </footer>
     </body>
