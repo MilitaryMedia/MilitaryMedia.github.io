@@ -48,7 +48,25 @@ function secretMessageButton1(input){
     }
     var nextCost = 10;
     var WheelnextCost = 100;
-    draw()
+    //draw()
+    if(click >= nextCost)
+        {
+            document.getElementById('clickerBuy').style.backgroundColor = 'green';
+        }
+    else
+        {
+            document.getElementById('clickerBuy').style.backgroundColor = 'red';
+        }
+  
+    if(click >= WheelnextCost)
+        {
+            document.getElementById('wheelBuy').style.backgroundColor = 'green';
+        }
+    else
+        {
+            document.getElementById('wheelBuy').style.backgroundColor = 'red';
+        }
+    
 }
 
 function buyCursor(){
