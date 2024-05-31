@@ -206,8 +206,8 @@ var nextCost = 10;
     draw()
 
 */
-
-/*function importfile() {
+/*
+function importfile() {
 document.getElementById('inputfile')
 .addEventListener('change', function () {
 
