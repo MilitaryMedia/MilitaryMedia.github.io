@@ -19,6 +19,8 @@ var click = 0;
 var message1 = 0;
 var cursors = 0;
 var wheel = 0;
+var nextCost = 10;
+var WheelnextCost = 100;
 /* following is part of template just replace "NEW_ITEM" with new item name */
 /*
 var NEW_ITEM = 0;
@@ -46,8 +48,7 @@ function secretMessageButton1(input){
     if(click >= 1){
         document.getElementById('clicks').innerHTML = 'you are at ' + click +' clicks.'
     }
-    var nextCost = 10;
-    var WheelnextCost = 100;
+
     //draw()
     if(click >= nextCost)
         {
