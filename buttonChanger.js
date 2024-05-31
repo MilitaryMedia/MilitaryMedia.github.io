@@ -157,7 +157,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
     {
         document.getElementById('clickerBuy').style.backgroundColor = 'green';
     }
-else
+  if(click <= nextCost)
     {
         document.getElementById('clickerBuy').style.backgroundColor = 'red';
     }
@@ -166,7 +166,7 @@ if(click >= WheelnextCost)
     {
         document.getElementById('wheelBuy').style.backgroundColor = 'green';
     }
-else
+if(click <= WheelnextCost)
     {
         document.getElementById('wheelBuy').style.backgroundColor = 'red';
     }
