@@ -161,7 +161,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
 
 
 
-  function export2txt() {
+ /* function export2txt() {
     const originalData1 = click
     const originalData2 = cursors
     const originalData3 = wheel
@@ -205,7 +205,7 @@ var nextCost = 10;
     var WheelnextCost = 100;
     draw()
 
-
+*/
 
 /*function importfile() {
 document.getElementById('inputfile')
