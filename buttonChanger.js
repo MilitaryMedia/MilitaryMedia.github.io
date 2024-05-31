@@ -153,6 +153,23 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   if (wheel >= 1) document.getElementById('wheel_img').style.display = 'block';
   var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
   document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
+  if(click >= nextCost)
+    {
+        document.getElementById('clickerBuy').style.backgroundColor = 'green';
+    }
+else
+    {
+        document.getElementById('clickerBuy').style.backgroundColor = 'red';
+    }
+
+if(click >= WheelnextCost)
+    {
+        document.getElementById('wheelBuy').style.backgroundColor = 'green';
+    }
+else
+    {
+        document.getElementById('wheelBuy').style.backgroundColor = 'red';
+    }
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
   /*
     if (typeof savegame.NEW_ITEM !== "undefined") NEW_ITEM = savegame.NEW_ITEM;
