@@ -39,6 +39,16 @@
     0% { transform: translate(-5px, 0px)}
     20% { transform: translate(0px, 0px)}
 }
+@keyframes tilter {
+    0% { transform: rotate(5deg)}
+    12% { transform: rotate(0deg)}
+    26% {transform: rotate(-5deg)}
+    40% {transform: rotate(-5deg)}
+}
+#Cage_ID {
+    animation: tilter 1s;
+    animation-iteration-count: infinite;
+}
 #mouse {
     /* Start the shake animation and make the animation last for 0.5 seconds */
   animation: clicker 1s;
@@ -60,7 +70,7 @@ animation-iteration-count: infinite;
    <!-- <div id="loader"><img src='loader.gif'></div> -->
         <header> 
             <img onclick="secretMessageButton1(1)" style="float: left; border-radius: 3px;" width="100" height="100" src="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" alt="Icon">
-            <h1 style="text-shadow: 0 0 5px #000000, 0 0 6px #000000;">Military Media</h1>
+            <h1 style="text-shadow: 0 0 5px #000000, 0 0 6px #000000;">Hammy Clicker</h1>
         </header>
 
         <script src="buttonChanger.js"></script>
@@ -71,7 +81,7 @@ animation-iteration-count: infinite;
             <a href="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" download=""><button id="secretButton1" style="display: none;">Press to see tank</button></a>
             <p ><span id="clicks" style="display: none;">Yo good job. You hit </span>
                <div id="cursorBuy" style="display: none;">
-                <img id='hampter_clicker' onclick="secretMessageButton1(1)" src="click-hampter.jpg">
+                <img id='hampter_clicker'  width="75" height="75" onclick="secretMessageButton1(1)" src="click-hampter.jpg">
                 <br>
                 <br>
                 <p style='display: none;' id=cursor_img>Clickers: <img id="mouse" src="https://m.media-amazon.com/images/I/61IHl1PNgPL._AC_UF894,1000_QL80_.jpg" width="55px" height="36px"><span id="cursors">0</span></p>
@@ -84,12 +94,16 @@ animation-iteration-count: infinite;
                 <button id="wheelBuy" onclick="buyWheel()">Buy Wheel</button>
                 <br>
                 <br>
+                <p style="display: none;" id="Cage_img">Cages: <img id="Cage_ID" src="hamster_cage.jpg" width="110px" height="72px"><span id="Cage">0</span></p>
+                <p>Cage Cost: <span id="CageCost">250</span></p>   
+                <button id="CageBuy" onclick="buyCage()">Buy Cage</button>
+                <br>
+                <br>
                 <!--     The following is a template for a new item. ctrl + h and replace all "NEW_ITEM" in that section with the name for it. use the same name in the js file too or it will not work. also replace "NEW_IMG" with the url for the new image and the "NEW_IMG_ID" with the new id.-->
                 <!--
-                    
-                <button onclick="buyNEW_ITEM()">Buy NEW_ITEM</button>
                 <p style="display: none;" id="NEW_ITEM_img">NEW_ITEM: <img id="NEW_IMG_ID" src="NEW_IMG" width="55px" height="36px"><span id="NEW_ITEM">0</span></p>
-                <br>NEW_ITEM Cost: <span id="NEW_ITEMCost">100</span></p>    
+                <br>NEW_ITEM Cost: <span id="NEW_ITEMCost">100</span></p>
+                <button onclick="buyNEW_ITEM()">Buy NEW_ITEM</button>    
                 -->
                 <button onclick='save()'>Save(local)</button>
                 <button onclick='load()'>Load(local)</button>

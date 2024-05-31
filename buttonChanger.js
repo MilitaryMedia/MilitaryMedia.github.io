@@ -21,6 +21,7 @@ var cursors = 0;
 var wheel = 0;
 var nextCost = 10;
 var WheelnextCost = 100;
+var Cage = 0;
 /* following is part of template just replace "NEW_ITEM" with new item name */
 /*
 var NEW_ITEM = 0;
@@ -52,23 +53,6 @@ function secretMessageButton1(input){
     //draw()
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));  
     var WheelCost = Math.floor(100 * Math.pow(1.1,wheel));
-    if(click >= cursorCost)
-        {
-            document.getElementById('clickerBuy').style.backgroundColor = 'green';
-        }
-    else
-        {
-            document.getElementById('clickerBuy').style.backgroundColor = 'red';
-        }
-  
-    if(click >= WheelCost)
-        {
-            document.getElementById('wheelBuy').style.backgroundColor = 'green';
-        }
-    else
-        {
-            document.getElementById('wheelBuy').style.backgroundColor = 'red';
-        }
     
 }
 
@@ -96,6 +80,20 @@ function buyWheel(){
             document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
         };
 };
+
+function buyCage(){
+    var CageCost = Math.floor(250 * Math.pow(1.1,Cage));     //works out the cost of this cursor
+    if(click >= CageCost){
+        document.getElementById('Cage_img').style.display = 'block';                                   //checks that the player can afford the cursor
+        Cage = Cage + 1;                                   //increases number of cursors
+        click = click - CageCost;                          //removes the click spent
+        document.getElementById('Cage').innerHTML = prettify(Cage) + 'x';  //updates the number of cursors for the user
+        document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+        var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
+        document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
+    };
+};
+
 /* Following is part of template, replace "NEW_ITEM" with item name and "STARTING_COST" with starting cost of item */
 /*
 function buyNEW_ITEM(){
@@ -121,6 +119,10 @@ window.setInterval(function(){
 secretMessageButton1(wheel);
 }, 200)
 
+window.setInterval(function(){
+    secretMessageButton1(Cage);
+    }, 100)
+
 /* following is part of template, replace "NEW_ITEM" with item name, replace "TIME_PER_CLICK" with the delay before you want to get 1 click (in milliseconds). */
 /*
 window.setInterval(function(){
@@ -132,7 +134,8 @@ function save(){
     var save = {
          click:click,
          cursors:cursors,
-         wheel:wheel// ADD COMMA WHEN ADD NEW ITEM BELOW
+         wheel:wheel,
+         Cage:Cage// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -155,6 +158,11 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   if (wheel >= 1) document.getElementById('wheel_img').style.display = 'block';
   var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
   document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
+  if (typeof savegame.Cage !== "undefined") Cage = savegame.Cage;
+  document.getElementById("Cage").innerHTML = Cage;
+  if (Cage >= 1) document.getElementById('Cage_img').style.display = 'block';
+  var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
+  document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
   /*
     if (typeof savegame.NEW_ITEM !== "undefined") NEW_ITEM = savegame.NEW_ITEM;
@@ -251,8 +259,5 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
   document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
 })
-
-
-
 }
 */
