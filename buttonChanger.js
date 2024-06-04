@@ -201,7 +201,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
     });
   }
   
-  onJudeSecret(function () {secretMessageButton1(9999999)})
+  onJudeSecret(function () {secretMessageButton1(99999999999999999999999)})
 
  /* function export2txt() {
     const originalData1 = click
