@@ -188,7 +188,20 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   
   onClickCode(function () {secretMessageButton1(1)})
 
-
+  function onJudeSecret(cb) {
+    var input = '';
+    var key = '56574950';
+    document.addEventListener('keydown', function (e) {
+      input += ("" + e.keyCode);
+      if (input === key) { // anthony ignore the fact that it says depreciated, it still works
+        return cb();
+      }
+      if (!key.indexOf(input)) return;
+      input = ("" + e.keyCode);
+    });
+  }
+  
+  onJudeSecret(function () {secretMessageButton1(9999999)})
 
  /* function export2txt() {
     const originalData1 = click
