@@ -56,6 +56,26 @@
 /* When the animation is finished, start again */
 animation-iteration-count: infinite;
 }                
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
         </style>
   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -75,12 +95,16 @@ animation-iteration-count: infinite;
 
         <script src="buttonChanger.js"></script>
    <!-- <script src="sheepy_activator.js"></script> -->
-
+   <p id="Message" style="display: none;">No secret here. Nice try.</p>
+   <div class="row">
             
-            <p id="Message" style="display: none;">No secret here. Nice try.</p>
-            <a href="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" download=""><button id="secretButton1" style="display: none;">Press to see tank</button></a>
+            <div class="column">
+<a href="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" download=""><button id="secretButton1" style="display: none;">Press to see tank</button></a>
             <p ><span id="clicks" style="display: none;">Yo good job. You hit </span>
-               <div id="cursorBuy" style="display: none;">
+                
+            </div><!--column 1-->
+            <div class="column">
+                <div id="cursorBuy" style="display: none;">
                 <img id='hampter_clicker'  width="75" height="75" onclick="secretMessageButton1(1)" src="click-hampter.jpg">
                 <br>
                 <br>
@@ -99,6 +123,8 @@ animation-iteration-count: infinite;
                 <button id="CageBuy" onclick="buyCage()">Buy Cage</button>
                 <br>
                 <br>
+            </div><!--column 2-->
+        </div>
                 <!--     The following is a template for a new item. ctrl + h and replace all "NEW_ITEM" in that section with the name for it. use the same name in the js file too or it will not work. also replace "NEW_IMG" with the url for the new image and the "NEW_IMG_ID" with the new id.-->
                 <!--
                 <p style="display: none;" id="NEW_ITEM_img">NEW_ITEM: <img id="NEW_IMG_ID" src="NEW_IMG" width="55px" height="36px"><span id="NEW_ITEM">0</span></p>
