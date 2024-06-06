@@ -73,8 +73,21 @@ animation-iteration-count: infinite;
   display: flex;
 }
 
+/* Create two unequal columns that floats next to each other */
 .column {
-  flex: 50%;
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 60%;
+  border: 3px solid rgb(0,0,0);
+}
+
+.right {
+  width: 40%;
+  border: 3px solid rgb(0, 0, 0);
 }
         </style>
   
@@ -104,15 +117,18 @@ animation-iteration-count: infinite;
                 
            
                
-                <img id='hampter_clicker'  width="75" height="75" onclick="secretMessageButton1(1)" src="click-hampter.jpg">
+                <img id='hampter_clicker'  style="border-radius: 50%;" width="375" height="375" onclick="secretMessageButton1(1)" src="click-hampter.jpg">
                 <br>
                 <br>
 
             </div><!--column 1-->
             <div class="column">
-                <p style='display: none;' id=cursor_img>Clickers: <img id="mouse" src="https://m.media-amazon.com/images/I/61IHl1PNgPL._AC_UF894,1000_QL80_.jpg" width="55px" height="36px"><span id="cursors">0</span></p>
-                <p>Clicker Cost: <span id="cursorCost">10</span></p>
-                <button  id="clickerBuy" onclick="buyCursor()">Buy Clicker</button>
+                <table>
+                    <tr>
+                        <td id="clickerBuy" onclick="buyCursor()"><span id="cursors">0</span><p>     </p><img id="mouse" src="https://m.media-amazon.com/images/I/61IHl1PNgPL._AC_UF894,1000_QL80_.jpg" width="55px" height="36px"><p style='display: none;' id=cursor_img> Clicker: $<span id="cursorCost">10</span></p>
+                
+            </tr>
+            </table>
                 <br>
                 <br>
                 <p style="display: none;" id="wheel_img">Wheels: <img id="hampter_gif" src="hamster_wheel.gif" width="110px" height="72px"><span id="wheel">0</span></p>
@@ -125,6 +141,7 @@ animation-iteration-count: infinite;
                 <button id="CageBuy" onclick="buyCage()">Buy Cage</button>
                 <br>
                 <br>
+            
             </div><!--column 2-->
         </div>
                 <!--     The following is a template for a new item. ctrl + h and replace all "NEW_ITEM" in that section with the name for it. use the same name in the js file too or it will not work. also replace "NEW_IMG" with the url for the new image and the "NEW_IMG_ID" with the new id.-->
