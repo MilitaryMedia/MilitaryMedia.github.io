@@ -22,6 +22,7 @@ var wheel = 0;
 var nextCost = 10;
 var WheelnextCost = 100;
 var Cage = 0;
+var clickpower = 1;
 /* following is part of template just replace "NEW_ITEM" with new item name */
 /*
 var NEW_ITEM = 0;
@@ -35,6 +36,25 @@ function logoclick()
 {
     document.getElementById('Message').style.display = 'block';
     
+}
+function click(){
+    click = click = clickpower;
+    document.getElementById("clicks").innerHTML = prettify(click);
+    
+    if( message1 == 0 && click >= 1){
+        document.getElementById('clicks').style.display = 'block';
+        message1++;
+        document.getElementById('secretButton1').style.display = 'block';
+        document.getElementById('cursorBuy').style.display = 'block';
+    }
+    if(click >= 1){
+        document.getElementById('clicks').innerHTML = 'you are at ' + click +' clicks.'
+    }
+
+    //draw()
+    var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));  
+    var WheelCost = Math.floor(100 * Math.pow(1.1,wheel));
+    var clickpowerUPGCost = Math.floor(15 * Math.pow(1.1,clickpower));
 }
 function secretMessageButton1(input){
     click = click + input;
@@ -53,6 +73,7 @@ function secretMessageButton1(input){
     //draw()
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));  
     var WheelCost = Math.floor(100 * Math.pow(1.1,wheel));
+    var clickpowerUPGCost = Math.floor(15 * Math.pow(1.1,clickpower));
     
 }
 
@@ -93,7 +114,17 @@ function buyCage(){
         document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
     };
 };
-
+function buyclickingupgrade(){
+    var clickUpgCost = Math.floor(15 * Math.pow(1.1,clickpower));     //works out the cost of this cursor
+    if(click >= clickUpgCost){                                   //checks that the player can afford the cursor
+        clickpower = clickpower + 1;                                   //increases number of cursors
+        click = click - clickUpgCost;                          //removes the click spent
+        document.getElementById('clickpowerUPG').innerHTML = prettify(clickpower) + 'x';  //updates the number of cursors for the user
+        document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+        var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1, clickpower));       //works out the cost of the next cursor
+        document.getElementById('clickpowerUPGCost').innerHTML = prettify(clickpowerUPGnextCost);  //updates the cursor cost for the user
+    };
+};
 /* Following is part of template, replace "NEW_ITEM" with item name and "STARTING_COST" with starting cost of item */
 /*
 function buyNEW_ITEM(){
@@ -135,7 +166,8 @@ function save(){
          click:click,
          cursors:cursors,
          wheel:wheel,
-         Cage:Cage// ADD COMMA WHEN ADD NEW ITEM BELOW
+         Cage:Cage,
+         clickpower:clickpower// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -163,6 +195,10 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   if (Cage >= 1) document.getElementById('Cage_img').style.display = 'block';
   var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
   document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
+  if (typeof savegame.clickpower !== "undefined") clickpower = savegame.clickpower;
+  document.getElementById("clickpowerUPG").innerHTML = clickpower;
+  var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1,clickpower));       //works out the cost of the next cursor
+  document.getElementById('clickpowerUPGCost').innerHTML = prettify(clickpowerUPGnextCost);
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
   /*
     if (typeof savegame.NEW_ITEM !== "undefined") NEW_ITEM = savegame.NEW_ITEM;
