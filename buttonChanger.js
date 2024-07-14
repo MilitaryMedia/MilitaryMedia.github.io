@@ -40,16 +40,14 @@ function logoclick()
 function click(input){
     click = click + input*clickpower;
     document.getElementById("clicks").innerHTML = prettify(click);
+    document.getElementById('clicks').innerHTML = 'you are at ' + click +' clicks.'
     
-    if( message1 == 0 && click >= 1){
         document.getElementById('clicks').style.display = 'block';
-        message1++;
+       
         document.getElementById('secretButton1').style.display = 'block';
         document.getElementById('cursorBuy').style.display = 'block';
-    }
-    if(click >= 1){
-        document.getElementById('clicks').innerHTML = 'you are at ' + click +' clicks.'
-    }
+    
+    
 
     //draw()
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));  
