@@ -37,7 +37,7 @@ function logoclick()
     document.getElementById('Message').style.display = 'block';
     
 }
-function click(input){
+function hamsterclick(input){
     click = click + input;
     document.getElementById("clicks").innerHTML = prettify(click);
     
