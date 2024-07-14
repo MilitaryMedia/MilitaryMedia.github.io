@@ -54,7 +54,7 @@ function click(){
     //draw()
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));  
     var WheelCost = Math.floor(100 * Math.pow(1.1,wheel));
-    var clickpowerUPGCost = Math.floor(15 * Math.pow(1.1,clickpower));
+   
 }
 function secretMessageButton1(input){
     click = click + input;
