@@ -38,7 +38,7 @@ function logoclick()
     
 }
 function click(){
-    click = click = clickpower;
+    click = click + clickpower;
     document.getElementById("clicks").innerHTML = prettify(click);
     
     if( message1 == 0 && click >= 1){
