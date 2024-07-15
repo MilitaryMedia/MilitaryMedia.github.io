@@ -55,7 +55,7 @@ function hamsterclick(input){
     //draw()
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));  
     var WheelCost = Math.floor(100 * Math.pow(1.1,wheel));
-    var clickpowerUPGCost = Math.floor(15 * Math.pow(1.1,clickpower));
+    
     
 }
 function secretMessageButton1(input){
@@ -119,7 +119,7 @@ function buyCage(){
 //following is still in progress
 
 
-/*function buyclickingupgrade(){
+function buyclickingupgrade(){
     var clickUpgCost = Math.floor(15 * Math.pow(1.1,clickpower));     //works out the cost of this cursor
     if(click >= clickUpgCost){                                   //checks that the player can afford the cursor
         clickpower = clickpower + 1;                                   //increases number of cursors
@@ -129,7 +129,7 @@ function buyCage(){
         var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1, clickpower));       //works out the cost of the next cursor
         document.getElementById('clickpowerUPGCost').innerHTML = prettify(clickpowerUPGnextCost);  //updates the cursor cost for the user
     };
-};*/
+};
 
 /* Following is part of template, replace "NEW_ITEM" with item name and "STARTING_COST" with starting cost of item */
 /*
@@ -172,8 +172,8 @@ function save(){
          click:click,
          cursors:cursors,
          wheel:wheel,
-         Cage:Cage//,
-         //clickpower:clickpower // ADD COMMA WHEN ADD NEW ITEM BELOW
+         Cage:Cage,
+         clickpower:clickpower // ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -203,10 +203,10 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
  //following is for click upg, doesnt work yet
  
-  /*if (typeof savegame.clickpower !== "undefined") clickpower = savegame.clickpower;
+  if (typeof savegame.clickpower !== "undefined") clickpower = savegame.clickpower;
   document.getElementById("clickpowerUPG").innerHTML = clickpower;
   var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1,clickpower));       //works out the cost of the next cursor
-  document.getElementById('clickpowerUPGCost').innerHTML = prettify(clickpowerUPGnextCost);*/
+  document.getElementById('clickpowerUPGCost').innerHTML = prettify(clickpowerUPGnextCost);
   
 
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
