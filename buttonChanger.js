@@ -120,13 +120,13 @@ function buyCage(){
 
 
 function buyclickingupgrade(){
-    var clickUpgCost = Math.floor(15 * Math.pow(1.1,clickpower));     //works out the cost of this cursor
+    var clickUpgCost = Math.floor(15 * Math.pow(1.1,clickpower-1));     //works out the cost of this cursor
     if(click >= clickUpgCost){                                   //checks that the player can afford the cursor
         clickpower = clickpower + 1;                                   //increases number of cursors
         click = click - clickUpgCost;                          //removes the click spent
         document.getElementById('clickpowerUPG').innerHTML = prettify(clickpower) + 'x';  //updates the number of cursors for the user
         document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
-        var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1, clickpower));       //works out the cost of the next cursor
+        var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1, clickpower-1));       //works out the cost of the next cursor
         document.getElementById('clickpowerUPGCost').innerHTML = prettify(clickpowerUPGnextCost);  //updates the cursor cost for the user
     };
 };
