@@ -39,7 +39,7 @@ function logoclick()
 }
 //following func is for when the hamster is clicked so that the upgrade applies. is not currently ever run.
 function hamsterclick(input){
-    click = click + input;
+    click = click + input*clickpower;
     document.getElementById("clicks").innerHTML = prettify(click);
     
     if( message1 == 0 && click >= 1){
