@@ -174,7 +174,8 @@ function save(){
          cursors:cursors,
          wheel:wheel,
          Cage:Cage,
-         clickpower:clickpower // ADD COMMA WHEN ADD NEW ITEM BELOW
+         clickpower:clickpower,
+         clickpowerUPGlvl:clickpowerUPGlvl // ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -205,9 +206,11 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
  //following is for click upg, doesnt work yet
  
   if (typeof savegame.clickpower !== "undefined") clickpower = savegame.clickpower;
-  document.getElementById("clickpowerUPG").innerHTML = clickpower;
-  var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1,clickpower));       //works out the cost of the next cursor
-  document.getElementById('clickpowerUPGCost').innerHTML = prettify(clickpowerUPGnextCost);
+  
+  if (typeof savegame.clickpowerUPGlvl !== "undefined") clickpowerUPGlvl = savegame.clickpowerUPGlvl;
+  document.getElementById("clickpowerUPG").innerHTML = clickpowerUPGlvl;
+  var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1,clickpowerUPGlvl));       //works out the cost of the next cursor
+  document.getElementById('clickpowerUPGcost').innerHTML = prettify(clickpowerUPGnextCost);
   
 
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
