@@ -37,7 +37,7 @@ function logoclick()
     document.getElementById('Message').style.display = 'block';
     
 }
-//following func is for when the hamster is clicked so that the upgrade applies. is not currently ever run.
+
 function hamsterclick(input){
     click = click + input*clickpower;
     document.getElementById("clicks").innerHTML = prettify(click);
@@ -116,7 +116,7 @@ function buyCage(){
         document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
     };
 };
-//following is still in progress
+
 
 var clickpowerUPGlvl = 1;
 function buyclickingupgrade(){
@@ -203,7 +203,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   if (Cage >= 1) document.getElementById('Cage_img').style.display = 'block';
   var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
   document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
- //following is for click upg, doesnt work yet
+ 
  
   if (typeof savegame.clickpower !== "undefined") clickpower = savegame.clickpower;
   
