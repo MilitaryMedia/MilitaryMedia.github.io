@@ -1,154 +1,40 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <meta charset="utf-8">
-        <link rel="icon" type="image/png" href="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-            <style>
-                html{
-                height: 100%
-                }
-                body{
-                height: 100%; margin: 0px;
-                }
-                #loader {
-                    width: 100%;
-                    height: 100%;
-                    background-color: white;
-                    margin: 0;
-                }
-                #hampter_clicker:active {
-  /* Start the shake animation and make the animation last for 0.5 seconds */
-  animation: shake 0.5s;
-
-  /* When the animation is finished, start again */
-  animation-iteration-count: infinite;
-}
-
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg) scale(0.95); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg) scale(0.9); }
-  20% { transform: translate(-3px, 0px) rotate(1deg) scale(0.85); }
-  30% { transform: translate(3px, 2px) rotate(0deg) scale(0.8); }
-  40% { transform: translate(1px, -1px) rotate(1deg) scale(0.75); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg) scale(0.7); }
-  60% { transform: translate(-3px, 1px) rotate(0deg) scale(0.75); }
-  70% { transform: translate(3px, 1px) rotate(-1deg) scale(0.8); }
-  80% { transform: translate(-1px, -1px) rotate(1deg) scale(0.85); }
-  90% { transform: translate(1px, 2px) rotate(0deg) scale(0.9); }
-  100% { transform: translate(1px, -2px) rotate(-1deg) scale(0.95); }
-}
-@keyframes clicker {
-    0% { transform: translate(-5px, 0px)}
-    20% { transform: translate(0px, 0px)}
-}
-#mouse {
-    /* Start the shake animation and make the animation last for 0.5 seconds */
-  animation: clicker 1s;
-
-/* When the animation is finished, start again */
-animation-iteration-count: infinite;
-}                
-        </style>
-  
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <title>Military Media | Home</title>
-       <!-- <script>
-        $(window).load(function() {      //Do the code in the {}s when the window has loaded 
-            $("#loader").fadeOut("fast");  //Fade out the #loader div
-          });
-          </script> -->
-    </head>
-    <body style="text-align: center;">
-   <!-- <div id="loader"><img src='loader.gif'></div> -->
-        <header> 
-            <a href="clicker.html"><img style="float: left; border-radius: 3px;" width="100" height="100" src="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" alt="Icon"></a>
-            <h1 style="text-shadow: 0 0 5px #000000, 0 0 6px #000000;">Military Media</h1>
-        </header>
-        <br>
-            <a href="America.html"><button id="America" onmouseover="textChanger('America')" onmouseleave="textReverter('America')">America</button></a>
-            <a href="Germany.html"><button id="Germany" onmouseover="textChanger('Germany')" onmouseleave="textReverter('Germany')">Germany</button></a>
-            <a href="SovietUnion.html"><button id="Soviet Union" onmouseover="textChanger('Soviet Union')" onmouseleave="textReverter('Soviet Union')">Soviet Union</button></a>
-            <a href="Italy.html"><button id="Italy" onmouseover="textChanger('Italy')" onmouseleave="textReverter('Italy')">Italy</button></a>
-            <a href="france.html"><button id="France" onmouseover="textChanger('France')" onmouseleave="textReverter('France')">France</button></a>
-            <a href="china.html"><button id="China" onmouseover="textChanger('China')" onmouseleave="textReverter('China')">China</button></a>
-            <a href="Japan.html"><button id="Japan" onmouseover="textChanger('Japan')" onmouseleave="textReverter('Japan')">Japan</button></a>
-            <a href="Sweeden.html"><button id="Sweden" onmouseover="textChanger('Sweden')" onmouseleave="textReverter('Sweden')">Sweden</button></a>
-        <br>
-        <br>
-            <a href="Classification.html"><button id="Classification of Tanks" onmouseover="textChanger('Classification of Tanks')" onmouseleave="textReverter('Classification of Tanks')">Classification of Tanks</button></a>
-            <a href="History.html"><button id="History of Tanks" onmouseover="textChanger('History of Tanks')" onmouseleave="textReverter('History of Tanks')">History of Tanks</button></a>
-            <a href="Shells.html"><button id="Types of Shells" onmouseover="textChanger('Types of Shells')" onmouseleave="textReverter('Types of Shells')">Types of Shells</button></a>
-            <a href="Sloped_How.html"><button id="How Does Sloped Armor Work?" onmouseover="textChanger('How Does Sloped Armor Work?')" onmouseleave="textReverter('How Does Sloped Armor Work?')">How Does Sloped Armor Work?</button></a>
-            <a href="sherman.html"><button id="Shermans" onmouseover="textChanger('Shermans')" onmouseleave="textReverter('Shermans')">Shermans</button></a>
-            <a href="War.html"><button id="Wars" onmouseover="textChanger('Wars')" onmouseleave="textReverter('Wars')">Wars</button></a>
-        <br>
-        <br>
-            <a href="German_Air.html"><button id="German Air" onmouseover="textChanger('German Air')" onmouseleave="textReverter('German Air')">German Air</button></a>
-        <br>
-        <p>
-            Welcome to our website dedicated to tanks - the armored vehicles that have played a significant role in military history. 
-            Tanks have been used in warfare for over a century, and their design and capabilities have evolved significantly over time. 
-            From the early days of World War I to the Israeli - Hamas conflict, tanks have proven to be a formidable force on the ground. 
-            Our website provides a comprehensive guide to tanks, including their history, types, and uses. Whether you are a military enthusiast or just curious about these impressive machines, our website has something for everyone. 
-            Join us as we explore the world of tanks and discover their impact on military strategy and technology.
-        </p>
-        <!--add link to youtube for @militaryhistory when it is created-->
-        <h2>Take our Feedback form now!</h2>
-        <a href="form.html">Go!</a>
-        <script src="konami.js"></script>
-        <script src="hamptercode.js"></script>
-        <script src="secret.js"></script>
-        <script src="game_code.js"></script>
-        <script src="buttonChanger.js"></script>
-   <!-- <script src="sheepy_activator.js"></script> -->
-        <footer>
-            <h3>Anthony, Matthew, and Nick</h3>
-            <h4>Check out our Minecraft Java server with the server ID HappyHammySMP.aternos.me</h4>
-            <a href="About.html"><button id="About Us" onmouseover="textChanger('About Us')" onmouseleave="textReverter('About Us')">About Us</button></a>
-            <!--<p id="Message" style="display: none;">No secret here. Nice try.</p>
-            <a href="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" download=""><button id="secretButton1" style="display: none;">Press to see tank</button></a>
-            <p ><span id="clicks" style="display: none;">Yo good job. You hit </span>
-               <div id="cursorBuy" style="display: none;">
-                <img id='hampter_clicker' onclick="secretMessageButton1(1)" src="click-hampter.jpg">
-                <br>
-                <br>
-                <p style='display: none;' id=cursor_img>Clickers: <img id="mouse" src="https://m.media-amazon.com/images/I/61IHl1PNgPL._AC_UF894,1000_QL80_.jpg" width="55px" height="36px"><span id="cursors">0</span></p>
-                <p>Clicker Cost: <span id="cursorCost">10</span></p>
-                <button  id="clickerBuy" onclick="buyCursor()">Buy Clicker</button>
-                <br>
-                <br>
-                <p style="display: none;" id="wheel_img">Wheels: <img id="hampter_gif" src="hamster_wheel.gif" width="110px" height="72px"><span id="wheel">0</span></p>
-                <p>Wheel Cost: <span id="wheelCost">100</span></p>
-                <button id="wheelBuy" onclick="buyWheel()">Buy Wheel</button>
-                <br>
-                <br>-->
-                <!--     The following is a template for a new item. ctrl + h and replace all "NEW_ITEM" in that section with the name for it. use the same name in the js file too or it will not work. also replace "NEW_IMG" with the url for the new image and the "NEW_IMG_ID" with the new id.-->
-                <!--
-                    
-                <button onclick="buyNEW_ITEM()">Buy NEW_ITEM</button>
-                <p style="display: none;" id="NEW_ITEM_img">NEW_ITEM: <img id="NEW_IMG_ID" src="NEW_IMG" width="55px" height="36px"><span id="NEW_ITEM">0</span></p>
-                <br>NEW_ITEM Cost: <span id="NEW_ITEMCost">100</span></p>    
-                -->
-                <!--<button onclick='save()'>Save(local)</button>
-                <button onclick='load()'>Load(local)</button>
-                <button onclick="export2txt()">Save(File)</button>-->
-           <!-- <button onclick="loadFile()">Load(File)</button> -->
-           <!--<input type="file" name="inputfile" id="inputfile"><button onclick="importfile()">Load file</button>
-           <br>-->
-       
-          <!--<script type="text/javascript">
-               document.getElementById('inputfile')
-                   .addEventListener('change', function () {
-       
-                       let fr = new FileReader();
-                       const import_save = fr.result.split(" ");       
-                       //fr.readAstext(this.files[0]);
-                   })
-           </script>-->
-        <!--</div>-->
-            </footer>
-    </body>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%; margin: 0px;
+        }
+        #loader{
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            margin: 0;
+        }
+    </style>
+    <title>HamsterSMP | Home</title>
+</head>
+<body style="text-align: center;">
+    <header>
+        <img style="float: left; border-radius: 3px;" width="100" height="100" src="https://pics.craiyon.com/2023-11-03/d75388c9748e429aaa931a8e1cf58ca8.webp">
+        <h1 style="text-shadow: 0 0 5px #000000, 0 0 6px #000000;">Hamster SMP</h1>
+    </header>
+    <p class="descr">
+        Welcome to the home page of the HamsterSMP Minecraft server!
+    </p>
+    <br>
+    <p>
+        <i><u><b>HamsterSMP</b></u></i><br>
+        <b>IP+Port |</b> HappyHammySMP.aternos.me:18090<br><br>
+        <i><u><b>Hamster Lifesteal SMP</b></u></i><br>
+        <b>IP+Port |</b> HamsterLSsmp.aternos.me:21170
+    </p>
+</body>
 </html>
