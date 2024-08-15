@@ -148,6 +148,18 @@ function buycursorMult(){
     };
 };
 
+var wheelMult = 1;
+function buywheelMult(){
+    var wheelMultCost = Math.floor(500 * Math.pow(1.1,wheelMult));     //works out the cost of this cursor
+    if(click >= wheelMultCost){                                   //checks that the player can afford the cursor
+        wheelMult = wheelMult + 1;                                   //increases number of cursors
+        click = click - wheelMultCost;                          //removes the click spent
+        document.getElementById('wheelMultUPG').innerHTML = prettify(wheelMult);  //updates the number of cursors for the user
+        document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+        var wheelMultnextCost = Math.floor(500 * Math.pow(1.1, wheelMult));       //works out the cost of the next cursor
+        document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
+    };
+};
 /* Following is part of template, replace "NEW_ITEM" with item name and "STARTING_COST" with starting cost of item */
 /*
 function buyNEW_ITEM(){
@@ -180,10 +192,10 @@ window.setInterval(function(){
 }, 200)
 
 window.setInterval(function(){
-    //if(Cage >= 1){
+    if(Cage >= 1){
         var cagePower = Cage*cageMult;
         secretMessageButton1(cagePower);
-    //};
+    };
     }, 100)
 
 /* following is part of template, replace "NEW_ITEM" with item name, replace "TIME_PER_CLICK" with the delay before you want to get 1 click (in milliseconds). */
@@ -201,7 +213,8 @@ function save(){
          Cage:Cage,
          clickpower:clickpower,
          clickpowerUPGlvl:clickpowerUPGlvl, 
-         cursorMult:cursorMult// ADD COMMA WHEN ADD NEW ITEM BELOW
+         cursorMult:cursorMult,
+         wheelMult:wheelMult// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -242,6 +255,11 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   document.getElementById("cursorMultUPG").innerHTML = cursorMult;
   var cursorMultnextCost = Math.floor(100 * Math.pow(1.1,cursorMult));       //works out the cost of the next cursor
   document.getElementById('cursorMultCost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
+  
+  if (typeof savegame.wheelMult !== "undefined") wheelMult = savegame.wheelMult;
+  document.getElementById("wheelMultUPG").innerHTML = wheelMult;
+  var wheelMultnextCost = Math.floor(500 * Math.pow(1.1,wheelMult));       //works out the cost of the next cursor
+  document.getElementById('wheelMultCost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
   
 
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
