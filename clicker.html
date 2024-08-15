@@ -221,7 +221,11 @@ animation-iteration-count: infinite;
                 -->
                 <button onclick='save()'>Save(local)</button>
                 <button onclick='load()'>Load(local)</button>
-                <!--<button onclick="export2txt()">Save(File)</button>-->
+                <button onclick="save2TXT()">Save(Code)</button>
+                <input type='text' id='TXTload'><button onclick="loadFromtxt()">Load(Code)</button>
+                <br>
+                <span id="txtSaveNotification"></span><br>
+                <span id="txtSave"></span>
            <!-- <button onclick="loadFile()">Load(File)</button> -->
            <!--<input type="file" name="inputfile" id="inputfile"><button onclick="importfile()">Load file</button>-->
            <br>
