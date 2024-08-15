@@ -88,6 +88,49 @@ animation-iteration-count: infinite;
   width: 39%;
   border: 3px solid black;
 }
+.tabcontent {
+      animation: fadeEffect 1s; /* Fading effect takes 1 second */
+    }
+    
+    /* Go from zero to full opacity */
+    @keyframes fadeEffect {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+    
+    /* Style the buttons that are used to open the tab content */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+    }
+    
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: rgb (21, 105, 216);
+    }
+    
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+    
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
         </style>
   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -121,7 +164,14 @@ animation-iteration-count: infinite;
 
             </div><!--column 1-->
             <div class="column right">
-                <table>
+              <div class="tab">
+              <button class="tablinks" onclick="openCity(event, 'buy')" id='defaultOpen'>Buy Helpers</button>
+              <button class="tablinks" onclick="openCity(event, 'UPG')" >Buy Upgrades</button>
+              </div>
+
+          <div id="buy" class="tabcontent">  
+            <h2>HELPERS</h2>  
+            <table>
                     <tr>
                         <td><button id="clickerBuy" onclick="buyCursor()"><span id="cursors" >0x</span><b><img id="mouse" src="https://m.media-amazon.com/images/I/61IHl1PNgPL._AC_UF894,1000_QL80_.jpg" width="55px" height="36px"><p id='cursor_img' > Clicker: $<span id="cursorCost">10</span></p></b></button></td>
             </tr>
@@ -132,32 +182,35 @@ animation-iteration-count: infinite;
               <td><button id="CageBuy" onclick="buyCage()"><span id="Cage">0x</span><b><img id="Cage_ID" src="hamster_cage.jpg" width="110px" height="72px"><p id="Cage_img">Cage: $<span id="CageCost">250</span></p></b></button></td>
             </tr>
             </table>
-                
+          </div>
+          
+          <div id="UPG" class="tabcontent">
+            <h2 style="text-align: center;">UPGRADES</h2>
+        
+
+            <button onclick="buyclickingupgrade()"><p>Click Power lvl <span id="clickpowerUPG">1</span></p>
+              <br>Cost: $<span id="clickpowerUPGcost">16</span>
+              <br>Each upgrade level increases click power by 1.
+            </button>
+            <br><br>
+    
+            <button onclick="buycursorMult()"><p>Cursor Power lvl <span id="cursorMultUPG">1</span></p>
+              <br>Cost: $<span id="cursorMultcost">110</span>
+              <br>Each upgrade level increases cursor output by 1.
+            </button>
+            <br><br>
+    
+            <button onclick="buywheelMult()"><p>Wheel Power lvl <span id="wheelMultUPG">1</span></p>
+              <br>Cost: $<span id="wheelMultcost">550</span>
+              <br>Each upgrade level increases wheel output by 1.
+            </button>
+          </div>    
                
             
             </div><!--column 2-->
         </div>
         <br>
-        <h2 style="text-align: center;">UPGRADES</h2>
-        <p>coming soon, currently in progress</p>
-        <!-- following for click power upg, not working yet-->
-
-        <button onclick="buyclickingupgrade()"><p>Click Power lvl <span id="clickpowerUPG">1</span></p>
-          <br>Cost: $<span id="clickpowerUPGcost">16</span>
-          <br>Each upgrade level increases click power by 1.
-        </button>
-        <br><br>
-
-        <button onclick="buycursorMult()"><p>Cursor Power lvl <span id="cursorMultUPG">1</span></p>
-          <br>Cost: $<span id="cursorMultcost">110</span>
-          <br>Each upgrade level increases cursor output by 1.
-        </button>
-        <br><br>
-
-        <button onclick="buywheelMult()"><p>Wheel Power lvl <span id="wheelMultUPG">1</span></p>
-          <br>Cost: $<span id="wheelMultcost">550</span>
-          <br>Each upgrade level increases wheel output by 1.
-        </button>
+        
         <br><br>
         <!-- WARNING: I HAVE NOT UPDATED THE FORMAT OF THE ITEM TEMPLATE BELOW. WILL TRY TO REMEMBER TO DO LATER-->
                 <!--     The following is a template for a new item. ctrl + h and replace all "NEW_ITEM" in that section with the name for it. use the same name in the js file too or it will not work. also replace "NEW_IMG" with the url for the new image and the "NEW_IMG_ID" with the new id.-->
@@ -182,6 +235,40 @@ animation-iteration-count: infinite;
                        //fr.readAstext(this.files[0]);
                    })
            </script>-->
+           <script>
+            // open lyric tab
+            function openCity(evt, buy) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(buy).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+
+            function openCity(evt, UPG) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(UPG).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+            </script>
+            <script>
+              // Get the element with id="defaultOpen" and click on it
+              document.getElementById("defaultOpen").click();
+              </script>
         </div>
         <footer>
             <h3>Anthony, Matthew, and Nick</h3>
