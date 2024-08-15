@@ -204,7 +204,13 @@ window.setInterval(function(){
     secretMessageButton1(NEW_ITEM);
     }, TIME_PER_CLICK)
 */
-
+function save2TXT(){
+    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult);
+    console.log(obj);
+    document.getElementById("txtSaveNotification").innerHTML = "The following is your save data. Keep it safe!"
+    var base64EncodeString = btoa(obj);
+    document.getElementById("txtSave").innerHTML = base64EncodeString;
+}
 function save(){
     var save = {
          click:click,
@@ -254,12 +260,12 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   if (typeof savegame.cursorMult !== "undefined") cursorMult = savegame.cursorMult;
   document.getElementById("cursorMultUPG").innerHTML = cursorMult;
   var cursorMultnextCost = Math.floor(100 * Math.pow(1.1,cursorMult));       //works out the cost of the next cursor
-  document.getElementById('cursorMultCost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
+  document.getElementById('cursorMultcost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
   
   if (typeof savegame.wheelMult !== "undefined") wheelMult = savegame.wheelMult;
   document.getElementById("wheelMultUPG").innerHTML = wheelMult;
   var wheelMultnextCost = Math.floor(500 * Math.pow(1.1,wheelMult));       //works out the cost of the next cursor
-  document.getElementById('wheelMultCost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
+  document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
   
 
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
@@ -272,6 +278,64 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   */
   };
 
+
+
+  function loadFromtxt() {
+
+    const input = document.getElementById("TXTload");
+const inputValue = input.value;
+var txtDecodeString = atob(inputValue);
+
+let TXTsavegame = txtDecodeString.split(",");
+
+
+
+if (typeof TXTsavegame[0] !==  "0") click = parseInt(TXTsavegame[0]);
+  document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks.";
+
+  if (typeof TXTsavegame[1] !==  "0") cursors = parseInt(TXTsavegame[1]);
+  document.getElementById("cursors").innerHTML = prettify(cursors) + 'x';
+  //if (typeof TXTsavegame.cursorCost !==  "0") cursorCost = TXTsavegame.cursorCost;
+  //document.getElementById("cursorCost").innerHTML = cursorCost;
+  if (cursors >= 1) document.getElementById('cursor_img').style.display = 'block';
+  var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
+        document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
+
+if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
+  document.getElementById("wheel").innerHTML = wheel;
+  if (wheel >= 1) document.getElementById('wheel_img').style.display = 'block';
+  var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
+  document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
+
+  if (typeof TXTsavegame[3] !==  "0") Cage = parseInt(TXTsavegame[3]);
+  document.getElementById("Cage").innerHTML = Cage;
+  if (Cage >= 1) document.getElementById('Cage_img').style.display = 'block';
+  var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
+  document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
+ 
+ 
+  if (typeof TXTsavegame[4] !==  "0") clickpower = parseInt(TXTsavegame[4]);
+  
+  if (typeof TXTsavegame[5] !==  "0") clickpowerUPGlvl = parseInt(TXTsavegame[5]);
+  document.getElementById("clickpowerUPG").innerHTML = clickpowerUPGlvl;
+  var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1,clickpowerUPGlvl));       //works out the cost of the next cursor
+  document.getElementById('clickpowerUPGcost').innerHTML = prettify(clickpowerUPGnextCost);
+
+  if (typeof TXTsavegame[6] !==  "0") cursorMult = parseInt(TXTsavegame[6]);
+  document.getElementById("cursorMultUPG").innerHTML = cursorMult;
+  var cursorMultnextCost = Math.floor(100 * Math.pow(1.1,cursorMult));       //works out the cost of the next cursor
+  document.getElementById('cursorMultcost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
+  
+  if (typeof TXTsavegame[7] !==  "0") wheelMult = parseInt(TXTsavegame[7]);
+  document.getElementById("wheelMultUPG").innerHTML = wheelMult;
+  var wheelMultnextCost = Math.floor(500 * Math.pow(1.1,wheelMult));       //works out the cost of the next cursor
+  document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
+
+
+}
+
+
+  
   function onClickCode(cb) {
     var input = '';
     var key = '13161316';
