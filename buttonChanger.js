@@ -23,6 +23,9 @@ var nextCost = 10;
 var WheelnextCost = 100;
 var Cage = 0;
 var clickpower = 1;
+var cursorMult = 1;
+var wheelMult = 1;
+var cageMult = 1;
 /* following is part of template just replace "NEW_ITEM" with new item name */
 /*
 var NEW_ITEM = 0;
@@ -132,6 +135,19 @@ function buyclickingupgrade(){
     };
 };
 
+var cursorMult = 1;
+function buycursorMult(){
+    var cursorMultCost = Math.floor(100 * Math.pow(1.1,cursorMult));     //works out the cost of this cursor
+    if(click >= cursorMultCost){                                   //checks that the player can afford the cursor
+        cursorMult = cursorMult + 1;                                   //increases number of cursors
+        click = click - cursorMultCost;                          //removes the click spent
+        document.getElementById('cursorMultUPG').innerHTML = prettify(cursorMult);  //updates the number of cursors for the user
+        document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+        var cursorMultnextCost = Math.floor(100 * Math.pow(1.1, cursorMult));       //works out the cost of the next cursor
+        document.getElementById('cursorMultcost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
+    };
+};
+
 /* Following is part of template, replace "NEW_ITEM" with item name and "STARTING_COST" with starting cost of item */
 /*
 function buyNEW_ITEM(){
@@ -149,16 +165,25 @@ function buyNEW_ITEM(){
 */
 
 window.setInterval(function(){
-	
-	secretMessageButton1(cursors);
+	if(cursors >= 1){
+        var cursorPower = cursors*cursorMult;
+	    secretMessageButton1(cursorPower);
+    };
 	//document.getElementById('hampter_clicker').style.animation="shake 0.1s"
 }, 1000);
+
 window.setInterval(function(){
-secretMessageButton1(wheel);
+    if(wheel >= 1){
+        var wheelPower = wheel*wheelMult;
+        secretMessageButton1(wheelPower);
+    };
 }, 200)
 
 window.setInterval(function(){
-    secretMessageButton1(Cage);
+    //if(Cage >= 1){
+        var cagePower = Cage*cageMult;
+        secretMessageButton1(cagePower);
+    //};
     }, 100)
 
 /* following is part of template, replace "NEW_ITEM" with item name, replace "TIME_PER_CLICK" with the delay before you want to get 1 click (in milliseconds). */
@@ -175,7 +200,8 @@ function save(){
          wheel:wheel,
          Cage:Cage,
          clickpower:clickpower,
-         clickpowerUPGlvl:clickpowerUPGlvl // ADD COMMA WHEN ADD NEW ITEM BELOW
+         clickpowerUPGlvl:clickpowerUPGlvl, 
+         cursorMult:cursorMult// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -211,6 +237,11 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   document.getElementById("clickpowerUPG").innerHTML = clickpowerUPGlvl;
   var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1,clickpowerUPGlvl));       //works out the cost of the next cursor
   document.getElementById('clickpowerUPGcost').innerHTML = prettify(clickpowerUPGnextCost);
+
+  if (typeof savegame.cursorMult !== "undefined") cursorMult = savegame.cursorMult;
+  document.getElementById("cursorMultUPG").innerHTML = cursorMult;
+  var cursorMultnextCost = Math.floor(100 * Math.pow(1.1,cursorMult));       //works out the cost of the next cursor
+  document.getElementById('cursorMultCost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
   
 
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
@@ -218,8 +249,8 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
     if (typeof savegame.NEW_ITEM !== "undefined") NEW_ITEM = savegame.NEW_ITEM;
   document.getElementById("NEW_ITEM").innerHTML = NEW_ITEM;
   if (NEW_ITEM >= 1) document.getElementById('NEW_ITEM_img').style.display = 'block';
-  var NEW_ITEMnextCost = Math.floor(STARTING_COST * Math.pow(1.1,NEW_ITEM));       //works out the cost of the next cursor
-  document.getElementById('NEW_ITEMCost').innerHTML = prettify(NEW_ITEMnextCost);  //updates the cursor cost for the user
+  var NEW_ITEMnextCost = Math.floor(STARTING_COST * Math.pow(1.1,NEW_ITEM));
+  document.getElementById('NEW_ITEMCost').innerHTML = prettify(NEW_ITEMnextCost);
   */
   };
 
