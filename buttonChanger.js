@@ -205,7 +205,7 @@ window.setInterval(function(){
     }, TIME_PER_CLICK)
 */
 function save2TXT(){
-    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult);
+    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING');
     console.log(obj);
     document.getElementById("txtSaveNotification").innerHTML = "The following is your save data. Keep it safe!"
     var base64EncodeString = btoa(obj);
@@ -288,7 +288,7 @@ var txtDecodeString = atob(inputValue);
 
 let TXTsavegame = txtDecodeString.split(",");
 
-
+if (TXTsavegame[5] == 'CHECK!?' && TXTsavegame[9] == 'CHECKSTRING'){
 
 if (typeof TXTsavegame[0] !==  "0") click = parseInt(TXTsavegame[0]);
   document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks.";
@@ -316,22 +316,24 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
  
   if (typeof TXTsavegame[4] !==  "0") clickpower = parseInt(TXTsavegame[4]);
   
-  if (typeof TXTsavegame[5] !==  "0") clickpowerUPGlvl = parseInt(TXTsavegame[5]);
+  if (typeof TXTsavegame[6] !==  "0") clickpowerUPGlvl = parseInt(TXTsavegame[6]);
   document.getElementById("clickpowerUPG").innerHTML = clickpowerUPGlvl;
   var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.3,clickpowerUPGlvl));       //works out the cost of the next cursor
   document.getElementById('clickpowerUPGcost').innerHTML = prettify(clickpowerUPGnextCost);
 
-  if (typeof TXTsavegame[6] !==  "0") cursorMult = parseInt(TXTsavegame[6]);
+  if (typeof TXTsavegame[7] !==  "0") cursorMult = parseInt(TXTsavegame[7]);
   document.getElementById("cursorMultUPG").innerHTML = cursorMult;
   var cursorMultnextCost = Math.floor(100 * Math.pow(1.1,cursorMult));       //works out the cost of the next cursor
   document.getElementById('cursorMultcost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
   
-  if (typeof TXTsavegame[7] !==  "0") wheelMult = parseInt(TXTsavegame[7]);
+  if (typeof TXTsavegame[8] !==  "0") wheelMult = parseInt(TXTsavegame[8]);
   document.getElementById("wheelMultUPG").innerHTML = wheelMult;
   var wheelMultnextCost = Math.floor(500 * Math.pow(1.1,wheelMult));       //works out the cost of the next cursor
   document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
 
-
+}else{
+    alert('Invalid save. Please do not tamper with the save codes.');
+}
 }
 
 
