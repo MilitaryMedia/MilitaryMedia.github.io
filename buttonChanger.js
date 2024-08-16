@@ -130,7 +130,7 @@ function buyclickingupgrade(){
         click = click - clickUpgCost;                          //removes the click spent
         document.getElementById('clickpowerUPG').innerHTML = prettify(clickpowerUPGlvl);  //updates the number of cursors for the user
         document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
-        var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1, clickpowerUPGlvl));       //works out the cost of the next cursor
+        var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.3, clickpowerUPGlvl));       //works out the cost of the next cursor
         document.getElementById('clickpowerUPGcost').innerHTML = prettify(clickpowerUPGnextCost);  //updates the cursor cost for the user
     };
 };
@@ -254,7 +254,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   
   if (typeof savegame.clickpowerUPGlvl !== "undefined") clickpowerUPGlvl = savegame.clickpowerUPGlvl;
   document.getElementById("clickpowerUPG").innerHTML = clickpowerUPGlvl;
-  var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1,clickpowerUPGlvl));       //works out the cost of the next cursor
+  var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.3,clickpowerUPGlvl));       //works out the cost of the next cursor
   document.getElementById('clickpowerUPGcost').innerHTML = prettify(clickpowerUPGnextCost);
 
   if (typeof savegame.cursorMult !== "undefined") cursorMult = savegame.cursorMult;
@@ -318,7 +318,7 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   
   if (typeof TXTsavegame[5] !==  "0") clickpowerUPGlvl = parseInt(TXTsavegame[5]);
   document.getElementById("clickpowerUPG").innerHTML = clickpowerUPGlvl;
-  var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.1,clickpowerUPGlvl));       //works out the cost of the next cursor
+  var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.3,clickpowerUPGlvl));       //works out the cost of the next cursor
   document.getElementById('clickpowerUPGcost').innerHTML = prettify(clickpowerUPGnextCost);
 
   if (typeof TXTsavegame[6] !==  "0") cursorMult = parseInt(TXTsavegame[6]);
