@@ -123,7 +123,7 @@ function buyCage(){
 
 var clickpowerUPGlvl = 1;
 function buyclickingupgrade(){
-    var clickUpgCost = Math.floor(15 * Math.pow(1.1,clickpowerUPGlvl));     //works out the cost of this cursor
+    var clickUpgCost = Math.floor(15 * Math.pow(1.3,clickpowerUPGlvl));     //works out the cost of this cursor
     if(click >= clickUpgCost){                                   //checks that the player can afford the cursor
         clickpower = clickpower + 1;                                   //increases number of cursors
         clickpowerUPGlvl = clickpowerUPGlvl + 1;
