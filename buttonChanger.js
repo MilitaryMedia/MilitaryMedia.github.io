@@ -15,6 +15,8 @@ Change the Insert part to whatever the button is saposed to say.
 id="Insert" onmouseover="textChanger('Insert')" onmouseleave="textReverter('Insert')"
 
 */
+var saveAllowed = true;
+
 var click = 0;
 var message1 = 0;
 var cursors = 0;
@@ -22,9 +24,13 @@ var wheel = 0;
 var nextCost = 10;
 var WheelnextCost = 100;
 var Cage = 0;
+var CagenextCost = 250;
 var clickpower = 1;
+var clickpowerUPGnextCost = 15
 var cursorMult = 1;
+var cursorMultnextCost = 100
 var wheelMult = 1;
+var wheelMultnextCost = 500;
 var cageMult = 1;
 /* following is part of template just replace "NEW_ITEM" with new item name */
 /*
@@ -205,13 +211,17 @@ window.setInterval(function(){
     }, TIME_PER_CLICK)
 */
 function save2TXT(){
+    if(saveAllowed == true){
     var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING');
     console.log(obj);
-    document.getElementById("txtSaveNotification").innerHTML = "The following is your save data. Keep it safe!"
+    document.getElementById("txtSaveNotification").innerHTML = "The following is your save data. Keep it safe!";
     var base64EncodeString = btoa(obj);
     document.getElementById("txtSave").innerHTML = base64EncodeString;
+    } else {
+        document.getElementById("txtSaveNotification").innerHTML = "You are not allowed to save via code when using cheats."
+    }
 }
-function save(){
+function save(reloadState){
     var save = {
          click:click,
          cursors:cursors,
@@ -220,7 +230,8 @@ function save(){
          clickpower:clickpower,
          clickpowerUPGlvl:clickpowerUPGlvl, 
          cursorMult:cursorMult,
-         wheelMult:wheelMult// ADD COMMA WHEN ADD NEW ITEM BELOW
+         wheelMult:wheelMult,
+         saveAllowed:saveAllowed// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -267,6 +278,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   var wheelMultnextCost = Math.floor(500 * Math.pow(1.1,wheelMult));       //works out the cost of the next cursor
   document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
   
+  if (typeof savegame.saveAllowed == true){saveAllowed = true;} else {saveAllowed = false; document.getElementById('sideNAV').style.display = 'block';}
 
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
   /*
@@ -276,7 +288,9 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   var NEW_ITEMnextCost = Math.floor(STARTING_COST * Math.pow(1.1,NEW_ITEM));
   document.getElementById('NEW_ITEMCost').innerHTML = prettify(NEW_ITEMnextCost);
   */
-  };
+ if(reloadState = 'RELOAD'){location.reload();
+    }
+};
 
 
 
@@ -366,8 +380,33 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
     });
   }
   
-  onJudeSecret(function () {secretMessageButton1(99999999999999999999999)})
+  onJudeSecret(function () {saveAllowed = false; document.getElementById('sideNAV').style.display = 'block';})
 
+
+function cheatAddCursor(amount) {
+
+        cursors = cursors + amount;
+        document.getElementById('cursors').innerHTML = prettify(cursors) + 'x';  //updates the number of cursors for the user
+        document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+        var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
+        document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
+    
+}
+function cheatAddWheel(amount) {
+
+        wheel = wheel + amount;
+        document.getElementById('wheel').innerHTML = prettify(wheel) + 'x';  //updates the number of cursors for the user
+        document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+        var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
+        document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
+}
+function cheatAddCage(amount) {    
+        Cage = Cage + amount;
+        document.getElementById('Cage').innerHTML = prettify(Cage) + 'x';  //updates the number of cursors for the user
+        document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+        var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
+        document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
+}
  /* function export2txt() {
     const originalData1 = click
     const originalData2 = cursors
@@ -439,3 +478,20 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
 })
 }
 */
+
+
+
+
+
+
+window.setInterval(function(){
+console.log(saveAllowed)
+    if(isNaN(click) == true) {
+console.log("truth")
+    if (confirm("Your game has been corrupted. Reloading game... Would you like to save (local only)?") = true) {
+save('RELOAD')
+} else {
+    location.reload();
+}
+} else {console.log('falseth')}
+}, 10000);
