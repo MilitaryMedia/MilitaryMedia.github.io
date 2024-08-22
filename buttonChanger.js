@@ -211,15 +211,13 @@ window.setInterval(function(){
     }, TIME_PER_CLICK)
 */
 function save2TXT(){
-    if(saveAllowed == true){
+   
     var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING');
     console.log(obj);
     document.getElementById("txtSaveNotification").innerHTML = "The following is your save data. Keep it safe!";
     var base64EncodeString = btoa(obj);
     document.getElementById("txtSave").innerHTML = base64EncodeString;
-    } else {
-        document.getElementById("txtSaveNotification").innerHTML = "You are not allowed to save via code when using cheats."
-    }
+  
 }
 function save(){
     var save = {
@@ -378,7 +376,7 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
     });
   }
   
-  onJudeSecret(function () {saveAllowed = false; document.getElementById('sideNAV').style.display = 'block';})
+  onJudeSecret(function () {document.getElementById('sideNAV').style.display = 'block';})
 
 
 function cheatAddCursor(amount) {
