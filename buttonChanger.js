@@ -230,8 +230,7 @@ function save(){
          clickpower:clickpower,
          clickpowerUPGlvl:clickpowerUPGlvl, 
          cursorMult:cursorMult,
-         wheelMult:wheelMult,
-         saveAllowed:saveAllowed// ADD COMMA WHEN ADD NEW ITEM BELOW
+         wheelMult:wheelMult// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
