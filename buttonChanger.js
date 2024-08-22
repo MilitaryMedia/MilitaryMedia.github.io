@@ -143,26 +143,26 @@ function buyclickingupgrade(){
 
 var cursorMult = 1;
 function buycursorMult(){
-    var cursorMultCost = Math.floor(100 * Math.pow(1.1,cursorMult));     //works out the cost of this cursor
+    var cursorMultCost = Math.floor(100 * Math.pow(1.3,cursorMult));     //works out the cost of this cursor
     if(click >= cursorMultCost){                                   //checks that the player can afford the cursor
         cursorMult = cursorMult + 1;                                   //increases number of cursors
         click = click - cursorMultCost;                          //removes the click spent
         document.getElementById('cursorMultUPG').innerHTML = prettify(cursorMult);  //updates the number of cursors for the user
         document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
-        var cursorMultnextCost = Math.floor(100 * Math.pow(1.1, cursorMult));       //works out the cost of the next cursor
+        var cursorMultnextCost = Math.floor(100 * Math.pow(1.3, cursorMult));       //works out the cost of the next cursor
         document.getElementById('cursorMultcost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
     };
 };
 
 var wheelMult = 1;
 function buywheelMult(){
-    var wheelMultCost = Math.floor(500 * Math.pow(1.1,wheelMult));     //works out the cost of this cursor
+    var wheelMultCost = Math.floor(500 * Math.pow(1.3,wheelMult));     //works out the cost of this cursor
     if(click >= wheelMultCost){                                   //checks that the player can afford the cursor
         wheelMult = wheelMult + 1;                                   //increases number of cursors
         click = click - wheelMultCost;                          //removes the click spent
         document.getElementById('wheelMultUPG').innerHTML = prettify(wheelMult);  //updates the number of cursors for the user
         document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
-        var wheelMultnextCost = Math.floor(500 * Math.pow(1.1, wheelMult));       //works out the cost of the next cursor
+        var wheelMultnextCost = Math.floor(500 * Math.pow(1.3, wheelMult));       //works out the cost of the next cursor
         document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
     };
 };
@@ -267,12 +267,12 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
 
   if (typeof savegame.cursorMult !== "undefined") cursorMult = savegame.cursorMult;
   document.getElementById("cursorMultUPG").innerHTML = cursorMult;
-  var cursorMultnextCost = Math.floor(100 * Math.pow(1.1,cursorMult));       //works out the cost of the next cursor
+  var cursorMultnextCost = Math.floor(100 * Math.pow(1.3,cursorMult));       //works out the cost of the next cursor
   document.getElementById('cursorMultcost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
   
   if (typeof savegame.wheelMult !== "undefined") wheelMult = savegame.wheelMult;
   document.getElementById("wheelMultUPG").innerHTML = wheelMult;
-  var wheelMultnextCost = Math.floor(500 * Math.pow(1.1,wheelMult));       //works out the cost of the next cursor
+  var wheelMultnextCost = Math.floor(500 * Math.pow(1.3,wheelMult));       //works out the cost of the next cursor
   document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
   
   
@@ -333,12 +333,12 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
 
   if (typeof TXTsavegame[7] !==  "0") cursorMult = parseInt(TXTsavegame[7]);
   document.getElementById("cursorMultUPG").innerHTML = cursorMult;
-  var cursorMultnextCost = Math.floor(100 * Math.pow(1.1,cursorMult));       //works out the cost of the next cursor
+  var cursorMultnextCost = Math.floor(100 * Math.pow(1.3,cursorMult));       //works out the cost of the next cursor
   document.getElementById('cursorMultcost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
   
   if (typeof TXTsavegame[8] !==  "0") wheelMult = parseInt(TXTsavegame[8]);
   document.getElementById("wheelMultUPG").innerHTML = wheelMult;
-  var wheelMultnextCost = Math.floor(500 * Math.pow(1.1,wheelMult));       //works out the cost of the next cursor
+  var wheelMultnextCost = Math.floor(500 * Math.pow(1.3,wheelMult));       //works out the cost of the next cursor
   document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
 
 }else{
