@@ -278,7 +278,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   var wheelMultnextCost = Math.floor(500 * Math.pow(1.1,wheelMult));       //works out the cost of the next cursor
   document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
   
-  if (typeof savegame.saveAllowed == true){saveAllowed = true;} else {saveAllowed = false; document.getElementById('sideNAV').style.display = 'block';}
+  
 
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
   /*
