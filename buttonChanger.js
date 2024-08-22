@@ -221,7 +221,7 @@ function save2TXT(){
         document.getElementById("txtSaveNotification").innerHTML = "You are not allowed to save via code when using cheats."
     }
 }
-function save(reloadState){
+function save(){
     var save = {
          click:click,
          cursors:cursors,
@@ -288,8 +288,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   var NEW_ITEMnextCost = Math.floor(STARTING_COST * Math.pow(1.1,NEW_ITEM));
   document.getElementById('NEW_ITEMCost').innerHTML = prettify(NEW_ITEMnextCost);
   */
- if(reloadState = 'RELOAD'){location.reload();
-    }
+
 };
 
 
@@ -488,10 +487,10 @@ window.setInterval(function(){
 console.log(saveAllowed)
     if(isNaN(click) == true) {
 console.log("truth")
-    if (confirm("Your game has been corrupted. Reloading game... Would you like to save (local only)?") = true) {
-save('RELOAD')
-} else {
+    alert("Your game has been corrupted. Reloading game... ");
+
+
     location.reload();
-}
+
 } else {console.log('falseth')}
 }, 10000);
