@@ -131,6 +131,44 @@ animation-iteration-count: infinite;
       border: 1px solid #ccc;
       border-top: none;
     }
+        .sidenav {
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: #111;
+          overflow-x: hidden;
+          transition: 0.5s;
+          padding-top: 60px;
+        }
+        
+        .sidenav a {
+          padding: 8px 8px 8px 32px;
+          text-decoration: none;
+          font-size: 25px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
+        }
+        
+        .sidenav a:hover {
+          color: #f1f1f1;
+        }
+        
+        .sidenav .closebtn {
+          position: absolute;
+          top: 0;
+          right: 25px;
+          font-size: 36px;
+          margin-left: 50px;
+        }
+        
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
         </style>
   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -144,16 +182,31 @@ animation-iteration-count: infinite;
     <body style="text-align: center;">
    <!-- <div id="loader"><img src='loader.gif'></div> -->
         <header> 
-            <img onclick="secretMessageButton1(1)" style="float: left; border-radius: 3px;" width="100" height="100" src="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" alt="Icon">
-            <h1 style="text-shadow: 0 0 5px #000000, 0 0 6px #000000;">Hammy Clicker<a id="back" href="index.html"><button id="back1">Back</button></a></h1>
+            <img onclick="secretMessageButton1(1)" style="float: left; border-radius: 3px;" width="100" height="100" src="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" alt="Tank Icon">
+            <div id="mySidenav" class="sidenav">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<button onclick="secretMessageButton1(1000)">Add 1k clicks</button>
+<button onclick="secretMessageButton1(100000)">Add 100k clicks</button>
+<button onclick="secretMessageButton1(1e+100000000000)">Add infinite clicks (Can get glitchy)</button>
+<button onclick="cheatAddCursor(10)">Buy 10 clickers</button>
+<button onclick="cheatAddCursor(100)">Buy 100 clickers</button>
+<button onclick="cheatAddCursor(1e+10000000)">Buy infinite clickers (Can get glitchy)</button>
+<button onclick="cheatAddWheel(10)">Buy 10 wheels</button>
+<button onclick="cheatAddWheel(100)">Buy 100 wheels</button>
+<button onclick="cheatAddWheel(1e+10000000)">Buy infinite wheels (Can get glitchy)</button>
+<button onclick="cheatAddCage(10)">Buy 10 cages</button>
+
+            </div>
+            <h1 style="text-shadow: 0 0 5px #000000, 0 0 6px #000000;">Hammy Clicker<a id="back" href="https://militarymedia.github.io"><button id="back1">Back</button></a></h1>
         </header>
 
         <script src="buttonChanger.js"></script>
    <!-- <script src="sheepy_activator.js"></script> -->
-  <div>
+   
+   <div>
    <div class="row" id="cursorBuy">     
    <div class="column left">
-
+    <span id='sideNAV' style="font-size:30px;cursor:pointer; display: none; text-align: left;" onclick="openNav()">&#9776;</span>
             <p><span id="clicks" style="display: none;">You are at 0 clicks</span>
                 
            
@@ -274,6 +327,16 @@ animation-iteration-count: infinite;
               // Get the element with id="defaultOpen" and click on it
               document.getElementById("defaultOpen").click();
               </script>
+
+<script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  </script>
         </div>
         <footer>
             <h3>Anthony, Matthew, and Nick</h3>
