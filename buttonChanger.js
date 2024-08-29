@@ -166,6 +166,19 @@ function buywheelMult(){
         document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
     };
 };
+
+var cageMult = 1;
+function buycageMult(){
+    var cageMultCost = Math.floor(750 * Math.pow(1.3,cageMult));     //works out the cost of this cursor
+    if(click >= cageMultCost){                                   //checks that the player can afford the cursor
+        cageMult = cageMult + 1;                                   //increases number of cursors
+        click = click - cageMultCost;                          //removes the click spent
+        document.getElementById('cageMultUPG').innerHTML = prettify(cageMult);  //updates the number of cursors for the user
+        document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+        var wheelMultnextCost = Math.floor(500 * Math.pow(1.3, cageMult));       //works out the cost of the next cursor
+        document.getElementById('cageMultcost').innerHTML = prettify(cageMultnextCost);  //updates the cursor cost for the user
+    };
+};
 /* Following is part of template, replace "NEW_ITEM" with item name and "STARTING_COST" with starting cost of item */
 /*
 function buyNEW_ITEM(){
@@ -212,7 +225,7 @@ window.setInterval(function(){
 */
 function save2TXT(){
    
-    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING');
+    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING,' + cageMult);
     console.log(obj);
     document.getElementById("txtSaveNotification").innerHTML = "The following is your save data. Keep it safe!";
     var base64EncodeString = btoa(obj);
@@ -228,7 +241,8 @@ function save(){
          clickpower:clickpower,
          clickpowerUPGlvl:clickpowerUPGlvl, 
          cursorMult:cursorMult,
-         wheelMult:wheelMult// ADD COMMA WHEN ADD NEW ITEM BELOW
+         wheelMult:wheelMult,
+         cageMult:cageMult// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -274,6 +288,11 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   document.getElementById("wheelMultUPG").innerHTML = wheelMult;
   var wheelMultnextCost = Math.floor(500 * Math.pow(1.3,wheelMult));       //works out the cost of the next cursor
   document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
+
+  if (typeof savegame.cageMult !== "undefined") cageMult = savegame.cageMult;
+  document.getElementById("cageMultUPG").innerHTML = cageMult;
+  var cageMultnextCost = Math.floor(750 * Math.pow(1.3,cageMult));       //works out the cost of the next cursor
+  document.getElementById('cageMultcost').innerHTML = prettify(cageMultnextCost);  //updates the cursor cost for the user
   
   
 
@@ -340,6 +359,11 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   document.getElementById("wheelMultUPG").innerHTML = wheelMult;
   var wheelMultnextCost = Math.floor(500 * Math.pow(1.3,wheelMult));       //works out the cost of the next cursor
   document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
+
+  if (typeof TXTsavegame[10] !==  "0") cageMult = parseInt(TXTsavegame[10]);
+  document.getElementById("cageMultUPG").innerHTML = cageMult;
+  var cageMultnextCost = Math.floor(750 * Math.pow(1.3,cageMult));       //works out the cost of the next cursor
+  document.getElementById('cageMultcost').innerHTML = prettify(cageMultnextCost);  //updates the cursor cost for the user
 
 }else{
     alert('Invalid save. Please do not tamper with the save codes.');
