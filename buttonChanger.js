@@ -175,7 +175,7 @@ function buycageMult(){
         click = click - cageMultCost;                          //removes the click spent
         document.getElementById('cageMultUPG').innerHTML = prettify(cageMult);  //updates the number of cursors for the user
         document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
-        var wheelMultnextCost = Math.floor(500 * Math.pow(1.3, cageMult));       //works out the cost of the next cursor
+        var cageMultnextCost = Math.floor(500 * Math.pow(1.3, cageMult));       //works out the cost of the next cursor
         document.getElementById('cageMultcost').innerHTML = prettify(cageMultnextCost);  //updates the cursor cost for the user
     };
 };
