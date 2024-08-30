@@ -39,7 +39,8 @@ var NEW_ITEM = 0;
 
 function prettify(input){
     var output = Math.round(input * 1000000)/1000000;
-	return output;
+    var output2 = output.toLocaleString();
+	return output2;
 }
 function logoclick()
 {
@@ -58,7 +59,7 @@ function hamsterclick(input){
         document.getElementById('cursorBuy').style.display = 'block';
     }
     if(click >= 1){
-        document.getElementById('clicks').innerHTML = 'you are at ' + click +' clicks.'
+        document.getElementById('clicks').innerHTML = 'you are at ' + prettify(click) +' clicks.'
     }
 
     //draw()
@@ -78,7 +79,7 @@ function secretMessageButton1(input){
         document.getElementById('cursorBuy').style.display = 'block';
     }
     if(click >= 1){
-        document.getElementById('clicks').innerHTML = 'you are at ' + click +' clicks.'
+        document.getElementById('clicks').innerHTML = 'you are at ' + prettify(click) +' clicks.'
     }
 
     //draw()
@@ -261,12 +262,12 @@ function save(){
   var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
 if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
-  document.getElementById("wheel").innerHTML = wheel;
+  document.getElementById("wheel").innerHTML = wheel + "x";
   if (wheel >= 1) document.getElementById('wheel_img').style.display = 'block';
   var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
   document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
   if (typeof savegame.Cage !== "undefined") Cage = savegame.Cage;
-  document.getElementById("Cage").innerHTML = Cage;
+  document.getElementById("Cage").innerHTML = Cage + "x";
   if (Cage >= 1) document.getElementById('Cage_img').style.display = 'block';
   var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
   document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
@@ -505,13 +506,8 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
 
 
 window.setInterval(function(){
-console.log(saveAllowed)
     if(isNaN(click) == true) {
-console.log("truth")
     alert("Your game has been corrupted. Reloading game... ");
-
-
     location.reload();
-
-} else {console.log('falseth')}
+}
 }, 10000);
