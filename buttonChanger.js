@@ -32,6 +32,8 @@ var cursorMultnextCost = 100
 var wheelMult = 1;
 var wheelMultnextCost = 500;
 var cageMult = 1;
+var house = 0;
+var houseMult = 1;
 /* following is part of template just replace "NEW_ITEM" with new item name */
 /*
 var NEW_ITEM = 0;
@@ -180,6 +182,20 @@ function buycageMult(){
         document.getElementById('cageMultcost').innerHTML = prettify(cageMultnextCost);  //updates the cursor cost for the user
     };
 };
+
+function buyhouse(){
+        var houseCost = Math.floor(500 * Math.pow(1.1,house));     //works out the cost of this cursor
+        if(click >= houseCost){
+            document.getElementById('house_img').style.display = 'block';                                   //checks that the player can afford the cursor
+            house = house + 1;                                   //increases number of cursors
+            click = click - houseCost;                          //removes the click spent
+            document.getElementById('house').innerHTML = prettify(house) + 'x';  //updates the number of cursors for the user
+            document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+            var housenextCost = Math.floor(500 * Math.pow(1.1,house));       //works out the cost of the next cursor
+            document.getElementById('houseCost').innerHTML = prettify(housenextCost);  //updates the cursor cost for the user
+        };
+};
+
 /* Following is part of template, replace "NEW_ITEM" with item name and "STARTING_COST" with starting cost of item */
 /*
 function buyNEW_ITEM(){
@@ -217,6 +233,12 @@ window.setInterval(function(){
         secretMessageButton1(cagePower);
     };
     }, 100)
+    window.setInterval(function(){
+        if(house >= 1){
+            var housePower = house*houseMult;
+            secretMessageButton1(housePower);
+        };
+        }, 50)
 
 /* following is part of template, replace "NEW_ITEM" with item name, replace "TIME_PER_CLICK" with the delay before you want to get 1 click (in milliseconds). */
 /*
@@ -390,7 +412,7 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
 
   function onJudeSecret(cb) {
     var input = '';
-    var key = '7765544849'; // ma60--fel1\f#c but must be inserted backward with a slash at the begining
+    var key = '77505013'; // ma60--fel1\f#c but must be inserted backward with a slash at the begining
     document.addEventListener('keydown', function (e) {
       input += ("" + e.keyCode);
       if (input === key) { // anthony ignore the fact that it says depreciated, it still works
