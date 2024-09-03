@@ -186,6 +186,7 @@ animation-iteration-count: infinite;
             <img onclick="secretMessageButton1(1)" style="float: left; border-radius: 3px;" width="100" height="100" src="https://static-00.iconduck.com/assets.00/tank-icon-2048x2048-n1ajz0u5.png" alt="Tank Icon">
             <div id="mySidenav" class="sidenav">
               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<button onclick="secretMessageButton1(100)">Add 100 clicks</button>
 <button onclick="secretMessageButton1(1000)">Add 1k clicks</button>
 <button onclick="secretMessageButton1(100000)">Add 100k clicks</button>
 <button onclick="secretMessageButton1(1e+100000000000)">Add infinite clicks (Can get glitchy)</button>
@@ -196,6 +197,8 @@ animation-iteration-count: infinite;
 <button onclick="cheatAddWheel(100)">Buy 100 wheels</button>
 <button onclick="cheatAddWheel(1e+10000000)">Buy infinite wheels (Can get glitchy)</button>
 <button onclick="cheatAddCage(10)">Buy 10 cages</button>
+<button onclick="cheatAddCage(100)">Buy 100 cages</button>
+<button onclick="cheatAddCage(1e+1000000000000)">Buy infinite cages (Can get glitchy)</button>
 
             </div>
             <h1 style="text-shadow: 0 0 5px #000000, 0 0 6px #000000;">Hammy Clicker<a id="back" href="https://militarymedia.github.io"><button id="back1">Back</button></a></h1>
@@ -234,6 +237,9 @@ animation-iteration-count: infinite;
             </tr>
             <tr>
               <td><button id="CageBuy" onclick="buyCage()"><span id="Cage">0x</span><b><img id="Cage_ID" src="hamster_cage.jpg" width="110px" height="72px"><p id="Cage_img">Cage: $<span id="CageCost">250</span></p></b></button></td>
+            </tr>
+            <tr>
+              <td><button id="houseBuy" onclick="buyhouse()"><span id="house">0x</span><b><img id="house_ID" src="https://m.media-amazon.com/images/I/614aNCLdx1L._AC_UF1000,1000_QL80_.jpg" width="110px" height="110px"><p id="house_img">Cage: $<span id="houseCost">500</span></p></b></button></td>
             </tr>
             </table>
           </div>

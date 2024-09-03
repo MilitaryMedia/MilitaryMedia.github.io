@@ -248,7 +248,7 @@ window.setInterval(function(){
 */
 function save2TXT(){
    
-    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING,' + cageMult);
+    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING,' + cageMult + ',' + house + ',' + houseMult);
     console.log(obj);
     document.getElementById("txtSaveNotification").innerHTML = "The following is your save data. Keep it safe!";
     var base64EncodeString = btoa(obj);
@@ -265,7 +265,9 @@ function save(){
          clickpowerUPGlvl:clickpowerUPGlvl, 
          cursorMult:cursorMult,
          wheelMult:wheelMult,
-         cageMult:cageMult// ADD COMMA WHEN ADD NEW ITEM BELOW
+         cageMult:cageMult,
+         house:house,
+         houseMult:houseMult// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -316,6 +318,12 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   document.getElementById("cageMultUPG").innerHTML = cageMult;
   var cageMultnextCost = Math.floor(750 * Math.pow(1.3,cageMult));       //works out the cost of the next cursor
   document.getElementById('cageMultcost').innerHTML = prettify(cageMultnextCost);  //updates the cursor cost for the user
+
+  if (typeof savegame.house !== "undefined") house = savegame.house;
+  document.getElementById("house").innerHTML = house;
+  if (house >= 1) document.getElementById('house_img').style.display = 'block';
+  var housenextCost = Math.floor(500 * Math.pow(1.1,house));
+  document.getElementById('houseCost').innerHTML = prettify(housenextCost);
   
   
 
@@ -388,6 +396,11 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   var cageMultnextCost = Math.floor(750 * Math.pow(1.3,cageMult));       //works out the cost of the next cursor
   document.getElementById('cageMultcost').innerHTML = prettify(cageMultnextCost);  //updates the cursor cost for the user
 
+  if (typeof TXTsavegame[11] !==  "0") house = parseInt(TXTsavegame[11]);
+  document.getElementById("houseUPG").innerHTML = house;
+  var housenextCost = Math.floor(500 * Math.pow(1.1,house));       //works out the cost of the next cursor
+  document.getElementById('housecost').innerHTML = prettify(housenextCost);  //updates the cursor cost for the user
+
 }else{
     alert('Invalid save. Please do not tamper with the save codes.');
 }
@@ -423,6 +436,23 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
     });
   }
   
+  onClickCode(function () {secretMessageButton1(1)})
+
+  function onOldSecretCode(cb) {
+    var input1 = '';
+    var key1 = '7765544849'; // ma60--fel1\f#c but must be inserted backward with a slash at the begining
+    document.addEventListener('keydown', function (e) {
+      input1 += ("" + e.keyCode);
+      if (input1 === key1) { // anthony ignore the fact that it says depreciated, it still works
+        return cb();
+      }
+      if (!key1.indexOf(input1)) return;
+      input1 = ("" + e.keyCode);
+    });
+  }
+  
+  onOldSecretCode(function () {alert("The code got leaked, so it got changed. Sry to those people who are now suffering from the concequences, but ur not getting the code back.");})
+
   onJudeSecret(function () {document.getElementById('sideNAV').style.display = 'block';})
 
 
