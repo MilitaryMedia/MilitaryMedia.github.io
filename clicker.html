@@ -223,11 +223,12 @@ animation-iteration-count: infinite;
             <div class="column right">
               <div class="tab">
               <button class="tablinks" onclick="openCity(event, 'buy')" id='defaultOpen'>Buy Helpers</button>
+              <button class="tablinks" onclick="openCity(event, 'sell')" >Sell Helpers</button>
               <button class="tablinks" onclick="openCity(event, 'UPG')" >Buy Upgrades</button>
               </div>
 
           <div id="buy" class="tabcontent" style="overflow-y:scroll;">  
-            <h2>HELPERS</h2>  
+            <h2 style="text-align: center;">HELPERS</h2>  
             <table>
                     <tr>
                         <td><button id="clickerBuy" onclick="buyCursor()"><span id="cursors" >0x</span><b><img id="mouse" src="https://m.media-amazon.com/images/I/61IHl1PNgPL._AC_UF894,1000_QL80_.jpg" width="55px" height="36px"><p id='cursor_img' > Clicker: $<span id="cursorCost">10</span></p></b></button></td>
@@ -243,6 +244,12 @@ animation-iteration-count: infinite;
             </tr>
             </table>
           </div>
+
+          <div id="sell" class="tabcontent" style="overflow-y:scroll;">  
+            <h2 style="text-align: center;">SELL HELPERS</h2>
+            <br>
+            <button onclick="sellCursor()"><p>Sell Clicker</p><br><span id="sellCursorAmount">You do not own any cursors!</span></button>
+            </div>
           
           <div id="UPG" class="tabcontent" style="overflow-y:scroll;">
             <h2 style="text-align: center;">UPGRADES</h2>
@@ -333,6 +340,20 @@ animation-iteration-count: infinite;
               tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
             document.getElementById(UPG).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+
+            function openCity(evt, sell) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(sell).style.display = "block";
             evt.currentTarget.className += " active";
             }
             </script>

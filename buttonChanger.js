@@ -40,7 +40,7 @@ var NEW_ITEM = 0;
 */
 
 function prettify(input){
-    var output = Math.round(input * 1000000)/1000000;
+    var output = Math.round(input * 100000000000)/100000000000;
     var output2 = output.toLocaleString();
 	return output2;
 }
@@ -67,9 +67,25 @@ function hamsterclick(input){
     //draw()
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));  
     var WheelCost = Math.floor(100 * Math.pow(1.1,wheel));
-    
-    
 }
+function sellCursor(){
+    if(cursors>=1){ 
+    var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));
+    cursors = cursors - 1;
+    click = click + cursorCost*0.6;
+    document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
+    var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));
+    document.getElementById('cursorCost').innerHTML = prettify(cursorCost);
+    document.getElementById('cursors').innerHTML = prettify(cursors) + 'x';
+    if(cursors>=1){
+        document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + cursorCost*0.6 + ' clicks.';
+    } else {
+    document.getElementById('sellCursorAmount').innerHTML = 'You do not own any cursors!';
+    }
+    }   
+}    
+    
+
 function secretMessageButton1(input){
     click = click + input;
     document.getElementById("clicks").innerHTML = prettify(click);
@@ -101,6 +117,7 @@ function buyCursor(){
         document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
         var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
+        document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + nextCost/2 + ' clicks.';
     };
 }    
 function buyWheel(){
@@ -214,11 +231,11 @@ function buyNEW_ITEM(){
 
 window.setInterval(function(){
 	if(cursors >= 1){
-        var cursorPower = cursors*cursorMult;
+        var cursorPower = cursors*cursorMult*0.1;
 	    secretMessageButton1(cursorPower);
     };
 	//document.getElementById('hampter_clicker').style.animation="shake 0.1s"
-}, 1000);
+}, 100);
 
 window.setInterval(function(){
     if(wheel >= 1){
