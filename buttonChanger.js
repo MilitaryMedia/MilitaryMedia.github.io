@@ -494,6 +494,28 @@ function cheatAddCage(amount) {
         var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
         document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
 }
+function cheatAddHouse(amount) {    
+    house = house + amount;
+    document.getElementById('house').innerHTML = prettify(house) + 'x';  //updates the number of cursors for the user
+    document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+    var housenextCost = Math.floor(500 * Math.pow(1.1,house));       //works out the cost of the next cursor
+    document.getElementById('houseCost').innerHTML = prettify(housenextCost);  //updates the cursor cost for the user
+}
+function cheatAddClickUPG(amount) {    
+    clickpower = clickpower + amount;
+    document.getElementById('clickpowerUPG').innerHTML = prettify(clickpowerUPGlvl);  //updates the number of cursors for the user
+    document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+    var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.3, clickpowerUPGlvl));       //works out the cost of the next cursor
+    document.getElementById('clickpowerUPGcost').innerHTML = prettify(clickpowerUPGnextCost);  //updates the cursor cost for the user
+}
+
+function cheatAddClickerUPG(amount) {    
+    cursorMult = cursorMult + amount;
+    document.getElementById('cursorMultUPG').innerHTML = prettify(cursorMult);  //updates the number of cursors for the user
+    document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+    var cursorMultnextCost = Math.floor(100 * Math.pow(1.3,cursorMult));       //works out the cost of the next cursor
+    document.getElementById('cursorMultcost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
+}
 
 window.setInterval(function(){
     if(isNaN(click) == true) {
