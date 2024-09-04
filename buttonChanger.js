@@ -58,9 +58,9 @@ function sellCursor(){
     document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));
     document.getElementById('cursorCost').innerHTML = prettify(cursorCost);
-    document.getElementById('cursors').innerHTML = prettify(cursors) + 'x';
+    document.getElementById('cursors').innerHTML = cursors + 'x';
     if(cursors>=1){
-        document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + cursorCost*0.6 + ' clicks.';
+        document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + prettify(cursorCost*0.6) + ' clicks.';
     } else {
     document.getElementById('sellCursorAmount').innerHTML = 'You do not own any cursors!';
     }
@@ -75,9 +75,9 @@ function sellwheel(){
     document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
     var wheelCost = Math.floor(100 * Math.pow(1.1,wheel));
     document.getElementById('wheelCost').innerHTML = prettify(wheelCost);
-    document.getElementById('wheel').innerHTML = prettify(wheel) + 'x';
+    document.getElementById('wheel').innerHTML = wheel + 'x';
     if(wheel>=1){
-        document.getElementById('sellWheelAmount').innerHTML = 'You will earn $' + wheelCost*0.6 + ' clicks.';
+        document.getElementById('sellWheelAmount').innerHTML = 'You will earn $' + prettify(wheelCost*0.6) + ' clicks.';
     } else {
     document.getElementById('sellWheelAmount').innerHTML = 'You do not own any wheels!';
     }
@@ -100,7 +100,7 @@ function buyCursor(){
         document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
         var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
-        document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + nextCost*0.6 + ' clicks.';
+        document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + prettify(nextCost*0.6) + ' clicks.';
     };
 }    
 function buyWheel(){
@@ -113,7 +113,7 @@ function buyWheel(){
             document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
             var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
             document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
-            document.getElementById('sellWheelAmount').innerHTML = 'You will earn $' + WheelnextCost*0.6 + ' clicks.';
+            document.getElementById('sellWheelAmount').innerHTML = 'You will earn $' + prettify(WheelnextCost*0.6) + ' clicks.';
         };
 };
 
@@ -212,14 +212,20 @@ function buyNEW_ITEM(){
         };
 };
 */
-var helpersOn = 1;
-function turnOffHelpers(){
-    if (helpersOn = 1) {
-        var helpersOn = 0;
-    } else {
-        var helpersOn = 1;
-    }
-}
+$(document).ready(function(){
+	$('#on').on('change',function(){
+    	if(this.checked){
+    		helpersOn=1;
+            console.log("onnz");
+    	}
+        else{
+        	helpersOn=0;
+            console.log("offz");
+        }
+    });
+});
+
+
 
 
 window.setInterval(function(){
@@ -228,7 +234,7 @@ if(helpersOn = 1){
         var cursorPower = cursors*cursorMult*0.1;
 	    secretMessageButton1(cursorPower);
     };
-}
+};
 	//document.getElementById('hampter_clicker').style.animation="shake 0.1s"
 }, 100);
 
@@ -301,13 +307,13 @@ function save(){
   document.getElementById("cursors").innerHTML = prettify(cursors) + 'x';
   var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);
-        if (cursors >= 1) {document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + cursorCost*0.6 + ' clicks.';} else {document.getElementById('sellCursorAmount').innerHTML = 'You do not own any cursors!';}
+        if (cursors >= 1) {document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + prettify(nextCost*0.6) + ' clicks.';} else {document.getElementById('sellCursorAmount').innerHTML = 'You do not own any cursors!';}
         
 if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   document.getElementById("wheel").innerHTML = wheel + "x";
   var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
   document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
-  if (wheel >= 1) {document.getElementById('sellWheelAmount').innerHTML = 'You will earn $' + wheelCost*0.6 + ' clicks.';} else {document.getElementById('sellWheelAmount').innerHTML = 'You do not own any wheels!';}
+  if (wheel >= 1) {document.getElementById('sellWheelAmount').innerHTML = 'You will earn $' + prettify(WheelnextCost*0.6) + ' clicks.';} else {document.getElementById('sellWheelAmount').innerHTML = 'You do not own any wheels!';}
 
   if (typeof savegame.Cage !== "undefined") Cage = savegame.Cage;
   document.getElementById("Cage").innerHTML = Cage + "x";
