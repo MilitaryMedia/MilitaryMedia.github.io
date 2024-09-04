@@ -199,6 +199,7 @@ animation-iteration-count: infinite;
 <button onclick="cheatAddCage(10)">Buy 10 cages</button>
 <button onclick="cheatAddCage(100)">Buy 100 cages</button>
 <button onclick="cheatAddCage(1e+1000000000000)">Buy infinite cages (Can get glitchy)</button>
+<button onclick="turnOffHelpers()">Turn off Helper earnings (for testing purposes) WORK IN PROGRESS</button>
 
             </div>
             <h1 style="text-shadow: 0 0 5px #000000, 0 0 6px #000000;">Hammy Clicker<a id="back" href="https://militarymedia.github.io"><button id="back1">Back</button></a></h1>
@@ -211,7 +212,7 @@ animation-iteration-count: infinite;
    <div class="row" id="cursorBuy">     
    <div class="column left">
     <span id='sideNAV' style="font-size:30px;cursor:pointer; display: none; text-align: left;" onclick="openNav()">&#9776;</span>
-            <p><span id="clicks" style="display: none;">You are at 0 clicks</span>
+            <p><span id="clicks">you are at 0 clicks</span><br>
                 
            
                
@@ -249,6 +250,8 @@ animation-iteration-count: infinite;
             <h2 style="text-align: center;">SELL HELPERS</h2>
             <br>
             <button onclick="sellCursor()"><p>Sell Clicker</p><br><span id="sellCursorAmount">You do not own any cursors!</span></button>
+            <br>
+            <button onclick="sellwheel()"><p>Sell Wheel</p><br><span id="sellWheelAmount">You do not own any wheels!</span></button>
             </div>
           
           <div id="UPG" class="tabcontent" style="overflow-y:scroll;">
