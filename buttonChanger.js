@@ -105,15 +105,15 @@ function sellhouse(){
     if(house>=1){ 
     var houseCost = Math.floor(500 * Math.pow(1.1,house));
     house = house - 1;
-    click = click + CageCost*0.6;
+    click = click + houseCost*0.6;
     document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
-    var CageCost = Math.floor(250 * Math.pow(1.1,Cage));
-    document.getElementById('CageCost').innerHTML = prettify(CageCost);
-    document.getElementById('Cage').innerHTML = Cage + 'x';
-    if(Cage>=1){
-        document.getElementById('sellCageAmount').innerHTML = 'You will earn $' + prettify(CageCost*0.6) + ' clicks.';
+    var houseCost = Math.floor(500 * Math.pow(1.1,house));
+    document.getElementById('houseCost').innerHTML = prettify(houseCost);
+    document.getElementById('house').innerHTML = house + 'x';
+    if(house>=1){
+        document.getElementById('sellhouseAmount').innerHTML = 'You will earn $' + prettify(houseCost*0.6) + ' clicks.';
     } else {
-    document.getElementById('sellCageAmount').innerHTML = 'You do not own any Cages!';
+    document.getElementById('sellhouseAmount').innerHTML = 'You do not own any houses!';
     }
     }   
 }
@@ -393,9 +393,9 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
 //house
   if (typeof savegame.house !== "undefined") house = savegame.house;
   document.getElementById("house").innerHTML = house;
-  if (house >= 1) document.getElementById('house_img').style.display = 'block';
   var housenextCost = Math.floor(500 * Math.pow(1.1,house));
   document.getElementById('houseCost').innerHTML = prettify(housenextCost);
+  if (house >= 1) {document.getElementById('sellhouseAmount').innerHTML = 'You will earn $' + prettify(housenextCost*0.6) + ' clicks.';} else {document.getElementById('sellhouseAmount').innerHTML = 'You do not own any houses!';}
 
 //house upg lvl
   if (typeof savegame.houseMult !== "undefined") houseMult = savegame.houseMult;
@@ -478,6 +478,7 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   document.getElementById("houseUPG").innerHTML = house;
   var housenextCost = Math.floor(500 * Math.pow(1.1,house));       //works out the cost of the next cursor
   document.getElementById('housecost').innerHTML = prettify(housenextCost);  //updates the cursor cost for the user
+  if (house >= 1) {document.getElementById('sellhouseAmount').innerHTML = 'You will earn $' + prettify(housenextCost*0.6) + ' clicks.';} else {document.getElementById('sellhouseAmount').innerHTML = 'You do not own any houses!';}
 
   if (typeof TXTsavegame[12] !==  "0") houseMult = parseInt(TXTsavegame[12]);
   document.getElementById("houseMultUPG").innerHTML = houseMult;
