@@ -82,7 +82,41 @@ function sellwheel(){
     document.getElementById('sellWheelAmount').innerHTML = 'You do not own any wheels!';
     }
     }   
-} 
+}
+
+function sellcage(){
+    if(Cage>=1){ 
+    var CageCost = Math.floor(250 * Math.pow(1.1,Cage));
+    Cage = Cage - 1;
+    click = click + CageCost*0.6;
+    document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
+    var CageCost = Math.floor(250 * Math.pow(1.1,Cage));
+    document.getElementById('CageCost').innerHTML = prettify(CageCost);
+    document.getElementById('Cage').innerHTML = Cage + 'x';
+    if(Cage>=1){
+        document.getElementById('sellCageAmount').innerHTML = 'You will earn $' + prettify(CageCost*0.6) + ' clicks.';
+    } else {
+    document.getElementById('sellCageAmount').innerHTML = 'You do not own any Cages!';
+    }
+    }   
+}
+
+function sellhouse(){
+    if(house>=1){ 
+    var houseCost = Math.floor(500 * Math.pow(1.1,house));
+    house = house - 1;
+    click = click + CageCost*0.6;
+    document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
+    var CageCost = Math.floor(250 * Math.pow(1.1,Cage));
+    document.getElementById('CageCost').innerHTML = prettify(CageCost);
+    document.getElementById('Cage').innerHTML = Cage + 'x';
+    if(Cage>=1){
+        document.getElementById('sellCageAmount').innerHTML = 'You will earn $' + prettify(CageCost*0.6) + ' clicks.';
+    } else {
+    document.getElementById('sellCageAmount').innerHTML = 'You do not own any Cages!';
+    }
+    }   
+}
 
 
 function secretMessageButton1(input){
@@ -127,6 +161,7 @@ function buyCage(){
         document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
         var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
         document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
+        document.getElementById('sellCageAmount').innerHTML = 'You will earn $' + prettify(CagenextCost*0.6) + ' clicks.';
     };
 };
 
@@ -207,6 +242,7 @@ function buyhouse(){
             document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
             var housenextCost = Math.floor(500 * Math.pow(1.1,house));       //works out the cost of the next cursor
             document.getElementById('houseCost').innerHTML = prettify(housenextCost);  //updates the cursor cost for the user
+            document.getElementById('sellhouseAmount').innerHTML = 'You will earn $' + prettify(housenextCost*0.6) + ' clicks.';
         };
 };
 
@@ -302,55 +338,70 @@ function save(){
        localStorage.setItem("save",JSON.stringify(save));
   };
   function load(){
-  var savegame = JSON.parse(localStorage.getItem("save"));
+  //clicks
+    var savegame = JSON.parse(localStorage.getItem("save"));
        if (typeof savegame.click !== "undefined") click = savegame.click;
   document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks.";
+  //cursors
   if (typeof savegame.cursors !== "undefined") cursors = savegame.cursors;
   document.getElementById("cursors").innerHTML = prettify(cursors) + 'x';
   var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);
         if (cursors >= 1) {document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + prettify(nextCost*0.6) + ' clicks.';} else {document.getElementById('sellCursorAmount').innerHTML = 'You do not own any cursors!';}
-        
+
+//wheels
 if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   document.getElementById("wheel").innerHTML = wheel + "x";
   var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
   document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
   if (wheel >= 1) {document.getElementById('sellWheelAmount').innerHTML = 'You will earn $' + prettify(WheelnextCost*0.6) + ' clicks.';} else {document.getElementById('sellWheelAmount').innerHTML = 'You do not own any wheels!';}
 
+//cages  
   if (typeof savegame.Cage !== "undefined") Cage = savegame.Cage;
   document.getElementById("Cage").innerHTML = Cage + "x";
-  if (Cage >= 1) document.getElementById('Cage_img').style.display = 'block';
   var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
   document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
+  if (Cage >= 1) {document.getElementById('sellCageAmount').innerHTML = 'You will earn $' + prettify(CagenextCost*0.6) + ' clicks.';} else {document.getElementById('sellCageAmount').innerHTML = 'You do not own any cages!';}
  
- 
+//clickpower 
   if (typeof savegame.clickpower !== "undefined") clickpower = savegame.clickpower;
-  
+
+//click upg level  
   if (typeof savegame.clickpowerUPGlvl !== "undefined") clickpowerUPGlvl = savegame.clickpowerUPGlvl;
   document.getElementById("clickpowerUPG").innerHTML = clickpowerUPGlvl;
   var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.3,clickpowerUPGlvl));       //works out the cost of the next cursor
   document.getElementById('clickpowerUPGcost').innerHTML = prettify(clickpowerUPGnextCost);
 
+//cursor upg lvl  
   if (typeof savegame.cursorMult !== "undefined") cursorMult = savegame.cursorMult;
   document.getElementById("cursorMultUPG").innerHTML = cursorMult;
   var cursorMultnextCost = Math.floor(100 * Math.pow(1.3,cursorMult));       //works out the cost of the next cursor
   document.getElementById('cursorMultcost').innerHTML = prettify(cursorMultnextCost);  //updates the cursor cost for the user
-  
+
+//wheel upg lvl  
   if (typeof savegame.wheelMult !== "undefined") wheelMult = savegame.wheelMult;
   document.getElementById("wheelMultUPG").innerHTML = wheelMult;
   var wheelMultnextCost = Math.floor(500 * Math.pow(1.3,wheelMult));       //works out the cost of the next cursor
   document.getElementById('wheelMultcost').innerHTML = prettify(wheelMultnextCost);  //updates the cursor cost for the user
 
+//cage upg lvl
   if (typeof savegame.cageMult !== "undefined") cageMult = savegame.cageMult;
   document.getElementById("cageMultUPG").innerHTML = cageMult;
   var cageMultnextCost = Math.floor(750 * Math.pow(1.3,cageMult));       //works out the cost of the next cursor
   document.getElementById('cageMultcost').innerHTML = prettify(cageMultnextCost);  //updates the cursor cost for the user
 
+//house
   if (typeof savegame.house !== "undefined") house = savegame.house;
   document.getElementById("house").innerHTML = house;
   if (house >= 1) document.getElementById('house_img').style.display = 'block';
   var housenextCost = Math.floor(500 * Math.pow(1.1,house));
   document.getElementById('houseCost').innerHTML = prettify(housenextCost);
+
+//house upg lvl
+  if (typeof savegame.houseMult !== "undefined") houseMult = savegame.houseMult;
+  document.getElementById("houseMultUPG").innerHTML = houseMult;
+  var houseMultnextCost = Math.floor(1000 * Math.pow(1.3,houseMult));       //works out the cost of the next cursor
+  document.getElementById('houseMultcost').innerHTML = prettify(houseMultnextCost);
   
   
 
@@ -428,6 +479,10 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   var housenextCost = Math.floor(500 * Math.pow(1.1,house));       //works out the cost of the next cursor
   document.getElementById('housecost').innerHTML = prettify(housenextCost);  //updates the cursor cost for the user
 
+  if (typeof TXTsavegame[12] !==  "0") houseMult = parseInt(TXTsavegame[12]);
+  document.getElementById("houseMultUPG").innerHTML = houseMult;
+  var houseMultnextCost = Math.floor(1000 * Math.pow(1.3,houseMult));       //works out the cost of the next cursor
+  document.getElementById('houseMultcost').innerHTML = prettify(houseMultnextCost);
 }else{
     alert('Invalid save. Please do not tamper with the save codes.');
 }
