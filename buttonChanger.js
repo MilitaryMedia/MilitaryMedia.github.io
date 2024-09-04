@@ -184,6 +184,19 @@ function buycageMult(){
     };
 };
 
+var houseMult = 1;
+function buyhouseMult(){
+    var houseMultCost = Math.floor(1000 * Math.pow(1.3,houseMult));     //works out the cost of this cursor
+    if(click >= houseMultCost){                                   //checks that the player can afford the cursor
+        houseMult = houseMult + 1;                                   //increases number of cursors
+        click = click - houseMultCost;                          //removes the click spent
+        document.getElementById('houseMultUPG').innerHTML = prettify(houseMult);  //updates the number of cursors for the user
+        document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+        var houseMultnextCost = Math.floor(1500 * Math.pow(1.3, houseMult));       //works out the cost of the next cursor
+        document.getElementById('houseMultcost').innerHTML = prettify(houseMultnextCost);  //updates the cursor cost for the user
+    };
+};
+
 function buyhouse(){
         var houseCost = Math.floor(500 * Math.pow(1.1,house));     //works out the cost of this cursor
         if(click >= houseCost){
