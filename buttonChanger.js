@@ -212,57 +212,46 @@ function buyNEW_ITEM(){
         };
 };
 */
-$(document).ready(function(){
-	$('#on').on('change',function(){
-    	if(this.checked){
-    		helpersOn=1;
-            console.log("onnz");
-    	}
-        else{
-        	helpersOn=0;
-            console.log("offz");
-        }
-    });
-});
+
 
 
 
 
 window.setInterval(function(){
-if(helpersOn = 1){
-    if(cursors >= 1){
+if(cursors >= 1){
+    
         var cursorPower = cursors*cursorMult*0.1;
 	    secretMessageButton1(cursorPower);
-    };
+    
 };
 	//document.getElementById('hampter_clicker').style.animation="shake 0.1s"
 }, 100);
 
 window.setInterval(function(){
-if(helpersOn = 1){
+
     if(wheel >= 1){
         var wheelPower = wheel*wheelMult*0.1
         secretMessageButton1(wheelPower);
     };
-}
+
 }, 20)
 
 window.setInterval(function(){
-if(helpersOn = 1){
+
     if(Cage >= 1){
         var cagePower = Cage*cageMult*0.1;
         secretMessageButton1(cagePower);
     };
-}
+
     }, 10)
 
     window.setInterval(function(){
-    if(helpersOn = 1){
+
         if(house >= 1){
             var housePower = house*houseMult;
             secretMessageButton1(housePower);
         };
-    }
+
         }, 50)
 
 /* following is part of template, replace "NEW_ITEM" with item name, replace "TIME_PER_CLICK" with the delay before you want to get 1 click (in milliseconds). */
