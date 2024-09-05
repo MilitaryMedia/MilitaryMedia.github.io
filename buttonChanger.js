@@ -435,22 +435,22 @@ if (typeof TXTsavegame[0] !==  "0") click = parseInt(TXTsavegame[0]);
   document.getElementById("cursors").innerHTML = prettify(cursors) + 'x';
   //if (typeof TXTsavegame.cursorCost !==  "0") cursorCost = TXTsavegame.cursorCost;
   //document.getElementById("cursorCost").innerHTML = cursorCost;
-  if (cursors >= 1) document.getElementById('cursor_img').style.display = 'block';
+
   var nextCost = Math.floor(10 * Math.pow(1.1,cursors));       //works out the cost of the next cursor
         document.getElementById('cursorCost').innerHTML = prettify(nextCost);  //updates the cursor cost for the user
+        if (cursors >= 1) {document.getElementById('sellCursorAmount').innerHTML = 'You will earn $' + prettify(nextCost*0.6) + ' clicks.';} else {document.getElementById('sellCursorAmount').innerHTML = 'You do not own any cursors!';}
 
 if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   document.getElementById("wheel").innerHTML = wheel;
-  if (wheel >= 1) document.getElementById('wheel_img').style.display = 'block';
   var WheelnextCost = Math.floor(100 * Math.pow(1.1,wheel));       //works out the cost of the next cursor
   document.getElementById('wheelCost').innerHTML = prettify(WheelnextCost);  //updates the cursor cost for the user
-
+  if (wheel >= 1) {document.getElementById('sellWheelAmount').innerHTML = 'You will earn $' + prettify(WheelnextCost*0.6) + ' clicks.';} else {document.getElementById('sellWheelAmount').innerHTML = 'You do not own any wheels!';}
+ 
   if (typeof TXTsavegame[3] !==  "0") Cage = parseInt(TXTsavegame[3]);
   document.getElementById("Cage").innerHTML = Cage;
-  if (Cage >= 1) document.getElementById('Cage_img').style.display = 'block';
   var CagenextCost = Math.floor(250 * Math.pow(1.1,Cage));       //works out the cost of the next cursor
   document.getElementById('CageCost').innerHTML = prettify(CagenextCost);  //updates the cursor cost for the user
- 
+  if (Cage >= 1) {document.getElementById('sellCageAmount').innerHTML = 'You will earn $' + prettify(CagenextCost*0.6) + ' clicks.';} else {document.getElementById('sellCageAmount').innerHTML = 'You do not own any cages!';}
  
   if (typeof TXTsavegame[4] !==  "0") clickpower = parseInt(TXTsavegame[4]);
   
