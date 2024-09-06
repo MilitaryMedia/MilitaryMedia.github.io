@@ -572,6 +572,7 @@ function cheatAddHouse(amount) {
 }
 function cheatAddClickUPG(amount) {    
     clickpower = clickpower + amount;
+    clickpowerUPGlvl = clickpowerUPGlvl + amount;
     document.getElementById('clickpowerUPG').innerHTML = prettify(clickpowerUPGlvl);  //updates the number of cursors for the user
     document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
     var clickpowerUPGnextCost = Math.floor(15 * Math.pow(1.3, clickpowerUPGlvl));       //works out the cost of the next cursor
