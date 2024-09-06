@@ -283,12 +283,14 @@ input:checked + .slider:before {
    <div>
    <div class="row" id="cursorBuy">     
    <div class="column left">
-    <!--<div class="tab">
-      <button class="tablinks" onclick="openCity(event, 'click')" id='defaultOpen'>Click</button>
-
-      </div>-->
-
     <span id='sideNAV' style="font-size:30px;cursor:pointer; display: none; text-align: left;" onclick="openNav()">&#9776;</span>
+    <!--<div class="tab">
+      <button class="tablinks1" onclick="openCity1(event, 'click')" id='defaultOpen1'>Click</button>
+      <button class="tablinks1" onclick="openCity1(event, 'HammyHome')">HammyHome</button>
+      </div>
+      <div id="click" class="tabcontent1">-->
+
+   
             <p><span id="clicks">you are at 0 clicks</span><br>
                 
            
@@ -296,7 +298,11 @@ input:checked + .slider:before {
                 <img id='hampter_clicker'  style="border-radius: 50%;" width="225" height="225" onclick="hamsterclick(1)" src="click-hampter.jpg">
                 <br>
                 <br>
-
+              <!--</div>
+              <div id="HammyHome" class="tabcontent1">
+                <p>Hammy Home level <span id="HammyLvl">1</span></p>
+                <iframe width="500" height="300" frameborder="0" src="https://hammyhome.com?hh=('names!%255B'apKc4Kwb1Kh3Kh'%255D~props!%255B('bp!'noneKbHPPPKx!-0.05J0.52~z!-25.76G0S~HE1DABBKbhQG-1.15~yQOBFBFBF*R*ADADAD*R*P7FMKwlQ.8947788025203809~nhQG0.75SOR'G-1J0.1~HL*MMI*L*LKo!'c1N2Nf%252CsnNh%252Cbe')%255D)*%252C%2523G)%252C('x!Hc!'%2523RPJ~y!-K'~LEC76R00N%252CcO~rzQ~HPFFQ!0RIMSJ1.5%2501SRQPONMLKJIHG*_"></iframe>
+              </div> -->
             </div><!--column 1-->
             <div class="column right">
               <div class="tab">
@@ -404,7 +410,7 @@ input:checked + .slider:before {
                    })
            </script>-->
            <script>
-            // open lyric tab
+            
             function openCity(evt, buy) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -446,10 +452,40 @@ input:checked + .slider:before {
             document.getElementById(sell).style.display = "block";
             evt.currentTarget.className += " active";
             }
+
+            
+            function openCity1(evt, click) {
+            var i, tabcontent1, tablinks1;
+            tabcontent1 = document.getElementsByClassName("tabcontent1");
+            for (i = 0; i < tabcontent1.length; i++) {
+              tabcontent1[i].style.display = "none";
+            }
+            tablinks1 = document.getElementsByClassName("tablinks1");
+            for (i = 0; i < tablinks1.length; i++) {
+              tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+            }
+            document.getElementById(click).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+
+            function openCity1(evt, HammyHome) {
+            var i, tabcontent1, tablinks1;
+            tabcontent1 = document.getElementsByClassName("tabcontent1");
+            for (i = 0; i < tabcontent1.length; i++) {
+              tabcontent1[i].style.display = "none";
+            }
+            tablinks1 = document.getElementsByClassName("tablinks1");
+            for (i = 0; i < tablinks1.length; i++) {
+              tablinks1[i].className = tablinks1[i].className.replace(" active", "");
+            }
+            document.getElementById(HammyHome).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
             </script>
             <script>
               // Get the element with id="defaultOpen" and click on it
               document.getElementById("defaultOpen").click();
+              document.getElementById("defaultOpen1").click();
               </script>
 
 <script>
