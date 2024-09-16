@@ -166,7 +166,7 @@ function buyCage(){
         document.getElementById('sellCageAmount').innerHTML = 'You will earn $' + prettify(CagenextCost*0.6) + ' clicks.';
     };
 };
-
+//hi
 
 var clickpowerUPGlvl = 1;
 function buyclickingupgrade(){
