@@ -326,6 +326,9 @@ input:checked + .slider:before {
             <tr>
               <td><button id="houseBuy" onclick="buyhouse()"><span id="house">0x</span><b><img id="house_ID" src="https://m.media-amazon.com/images/I/614aNCLdx1L._AC_UF1000,1000_QL80_.jpg" width="110px" height="110px"><p id="house_img">House: $<span id="houseCost">500</span></p></b></button></td>
             </tr>
+            <tr>
+              <td><button id="GodBuy" onclick="buyGod()"><span id="God">0x</span><b><img id="God_ID" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK_c18wObI6jlqNbi8H9l4coI8UVcWede1uQ&s" width="110px" height="110px"><p id="God_img">God: $<span id="GodCost">100,000</span></p></b></button></td>
+              </tr>
             </table>
           </div>
 
@@ -339,6 +342,8 @@ input:checked + .slider:before {
             <button onclick="sellcage()"><p>Sell Cage</p><br><span id="sellCageAmount">You do not own any cages!</span></button>
             <br>
             <button onclick="sellhouse()"><p>Sell House</p><br><span id="sellhouseAmount">You do not own any houses!</span></button>
+            <br>
+            <button onclick="sellGod()"><p>Sell God</p><br><span id="sellGodAmount">You do not own any Gods!</span></button>
             </div>
           
           <div id="UPG" class="tabcontent" style="overflow-y:scroll;">
@@ -373,6 +378,12 @@ input:checked + .slider:before {
               <br>Cost: $<span id="houseMultcost">1300</span>
               <br>Each upgrade level increases house output by 1.
             </button>
+            <br><br>
+
+                <button onclick="buyGodMult()"><p>God Power lvl <span id="GodMultUPG">1</span></p>
+                  <br>Cost: $<span id="GodMultcost">195,000</span>
+                  <br>Each upgrade level increases God output by 1.
+                </button>
           </div>    
                
             

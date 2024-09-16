@@ -34,6 +34,8 @@ var wheelMultnextCost = 500;
 var cageMult = 1;
 var house = 0;
 var houseMult = 1;
+var God = 0;
+var GodMult = 1;
 /* following is part of template just replace "NEW_ITEM" with new item name */
 /*
 var NEW_ITEM = 0;
@@ -246,6 +248,61 @@ function buyhouse(){
         };
 };
 
+function buyGod(){
+  var GodCost = Math.floor(100000 * Math.pow(1.1,God));     //works out the cost of this cursor
+  if(click >= GodCost){
+      document.getElementById('God_img').style.display = 'block';                                   //checks that the player can afford the cursor
+      God = God + 1;                                   //increases number of cursors
+      click = click - GodCost;                          //removes the click spent
+      document.getElementById('God').innerHTML = prettify(God) + 'x';  //updates the number of cursors for the user
+      document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+      var GodnextCost = Math.floor(100000 * Math.pow(1.1,God));       //works out the cost of the next cursor
+      document.getElementById('GodCost').innerHTML = prettify(GodnextCost);  //updates the cursor cost for the user
+      document.getElementById('sellGodAmount').innerHTML = 'You will earn $' + prettify(GodnextCost*0.6) + ' clicks.';
+  };
+};
+
+var GodMult = 1;
+function buyGodMult(){
+  var GodMultCost = Math.floor(150000 * Math.pow(1.3,GodMult));     //works out the cost of this cursor
+  if(click >= GodMultCost){                                   //checks that the player can afford the cursor
+      GodMult = GodMult + 1;                                   //increases number of cursors
+      click = click - GodMultCost;                          //removes the click spent
+      document.getElementById('GodMultUPG').innerHTML = prettify(GodMult);  //updates the number of cursors for the user
+      document.getElementById('clicks').innerHTML = "you are at " + prettify(click) + " clicks.";  //updates the number of click for the user
+      var GodMultnextCost = Math.floor(150000 * Math.pow(1.3, GodMult));       //works out the cost of the next cursor
+      document.getElementById('GodMultcost').innerHTML = prettify(GodMultnextCost);  //updates the cursor cost for the user
+  };
+};
+
+
+function sellGod(){
+  if(God>=1){ 
+  var GodCost = Math.floor(100000 * Math.pow(1.1,God));
+  God = God - 1;
+  click = click + GodCost*0.6;
+  document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
+  var GodCost = Math.floor(100000 * Math.pow(1.1,God));
+  document.getElementById('GodCost').innerHTML = prettify(GodCost);
+  document.getElementById('God').innerHTML = God + 'x';
+  if(God>=1){
+      document.getElementById('sellGodAmount').innerHTML = 'You will earn $' + prettify(GodCost*0.6) + ' clicks.';
+  } else {
+  document.getElementById('sellGodAmount').innerHTML = 'You do not own any Gods!';
+  }
+  }   
+}
+
+
+window.setInterval(function(){
+
+  if(God >= 1){
+      var GodPower = God*GodMult;
+      secretMessageButton1(GodPower);
+  };
+
+  }, 1)
+
 /* Following is part of template, replace "NEW_ITEM" with item name and "STARTING_COST" with starting cost of item */
 /*
 function buyNEW_ITEM(){
@@ -311,7 +368,7 @@ window.setInterval(function(){
 */
 function save2TXT(){
    
-    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING,' + cageMult + ',' + house + ',' + houseMult);
+    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING,' + cageMult + ',' + house + ',' + houseMult + ',' + God + ',' + GodMult);
     console.log(obj);
     document.getElementById("txtSaveNotification").innerHTML = "The following is your save data. Keep it safe!";
     var base64EncodeString = btoa(obj);
@@ -330,7 +387,9 @@ function save(){
          wheelMult:wheelMult,
          cageMult:cageMult,
          house:house,
-         houseMult:houseMult// ADD COMMA WHEN ADD NEW ITEM BELOW
+         houseMult:houseMult,
+         God:God,
+         GodMult:GodMult// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -402,6 +461,20 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   document.getElementById("houseMultUPG").innerHTML = houseMult;
   var houseMultnextCost = Math.floor(1000 * Math.pow(1.3,houseMult));       //works out the cost of the next cursor
   document.getElementById('houseMultcost').innerHTML = prettify(houseMultnextCost);
+
+
+  
+                            
+  if (typeof savegame.God !==  "undefined") God = savegame.God;
+  document.getElementById("God").innerHTML = God;
+  var GodnextCost = Math.floor(100000 * Math.pow(1.1,God));       //works out the cost of the next cursor
+  document.getElementById('Godcost').innerHTML = prettify(GodnextCost);  //updates the cursor cost for the user
+  if (God >= 1) {document.getElementById('sellGodAmount').innerHTML = 'You will earn $' + prettify(GodnextCost*0.6) + ' clicks.';} else {document.getElementById('sellGodAmount').innerHTML = 'You do not own any Gods!';}
+
+  if (typeof savegame.God !==  "undefined") GodMult = savegame.God;
+  document.getElementById("GodMultUPG").innerHTML = GodMult;
+  var GodMultnextCost = Math.floor(150000 * Math.pow(1.3,GodMult));       //works out the cost of the next cursor
+  document.getElementById('GodMultcost').innerHTML = prettify(GodMultnextCost);
   
   
 
@@ -484,6 +557,19 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   document.getElementById("houseMultUPG").innerHTML = houseMult;
   var houseMultnextCost = Math.floor(1000 * Math.pow(1.3,houseMult));       //works out the cost of the next cursor
   document.getElementById('houseMultcost').innerHTML = prettify(houseMultnextCost);
+
+  
+                        
+  if (typeof TXTsavegame[13] !==  "0") God = parseInt(TXTsavegame[13]);
+  document.getElementById("GodUPG").innerHTML = God;
+  var GodnextCost = Math.floor(100000 * Math.pow(1.1,God));       //works out the cost of the next cursor
+  document.getElementById('Godcost').innerHTML = prettify(GodnextCost);  //updates the cursor cost for the user
+  if (God >= 1) {document.getElementById('sellGodAmount').innerHTML = 'You will earn $' + prettify(GodnextCost*0.6) + ' clicks.';} else {document.getElementById('sellGodAmount').innerHTML = 'You do not own any Gods!';}
+
+  if (typeof TXTsavegame[14] !==  "0") GodMult = parseInt(TXTsavegame[131]);
+  document.getElementById("GodMultUPG").innerHTML = GodMult;
+  var GodMultnextCost = Math.floor(150000 * Math.pow(1.3,GodMult));       //works out the cost of the next cursor
+  document.getElementById('GodMultcost').innerHTML = prettify(GodMultnextCost);
 }else{
     alert('Invalid save. Please do not tamper with the save codes.');
 }
