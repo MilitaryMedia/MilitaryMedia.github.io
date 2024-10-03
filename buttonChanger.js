@@ -44,8 +44,8 @@ var NEW_ITEM = 0;
 function prettify(input){
     var output = Math.round(input * 100000000000)/100000000000;
     var output2 = output.toLocaleString();
-    var output3 = Math.round(output2)
-	return output3;
+    
+	return output2;
 }
 
 
