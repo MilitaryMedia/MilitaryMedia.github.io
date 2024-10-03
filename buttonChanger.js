@@ -44,7 +44,6 @@ var NEW_ITEM = 0;
 function prettify(input){
     var output = Math.round(input * 100000000000)/100000000000;
     var output2 = output.toLocaleString();
-    
 	return output2;
 }
 
@@ -57,7 +56,7 @@ function sellCursor(){
     if(cursors>=1){ 
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));
     cursors = cursors - 1;
-    click = prettify(click + cursorCost*0.6);
+    click = click + cursorCost*0.6;
     document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
     var cursorCost = Math.floor(10 * Math.pow(1.1,cursors));
     document.getElementById('cursorCost').innerHTML = prettify(cursorCost);
@@ -74,7 +73,7 @@ function sellwheel(){
     if(wheel>=1){ 
     var wheelCost = Math.floor(100 * Math.pow(1.1,wheel));
     wheel = wheel - 1;
-    click = prettify(click + wheelCost*0.6);
+    click = click + wheelCost*0.6;
     document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
     var wheelCost = Math.floor(100 * Math.pow(1.1,wheel));
     document.getElementById('wheelCost').innerHTML = prettify(wheelCost);
@@ -91,7 +90,7 @@ function sellcage(){
     if(Cage>=1){ 
     var CageCost = Math.floor(250 * Math.pow(1.1,Cage));
     Cage = Cage - 1;
-    click = prettify(click + CageCost*0.6);
+    click = click + CageCost*0.6;
     document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
     var CageCost = Math.floor(250 * Math.pow(1.1,Cage));
     document.getElementById('CageCost').innerHTML = prettify(CageCost);
@@ -108,7 +107,7 @@ function sellhouse(){
     if(house>=1){ 
     var houseCost = Math.floor(500 * Math.pow(1.1,house));
     house = house - 1;
-    click = prettify(click + houseCost*0.6);
+    click = click + houseCost*0.6;
     document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
     var houseCost = Math.floor(500 * Math.pow(1.1,house));
     document.getElementById('houseCost').innerHTML = prettify(houseCost);
@@ -281,7 +280,7 @@ function sellGod(){
   if(God>=1){ 
   var GodCost = Math.floor(100000 * Math.pow(1.1,God));
   God = God - 1;
-  click = prettify(click + GodCost*0.6);
+  click = click + GodCost*0.6;
   document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks."; 
   var GodCost = Math.floor(100000 * Math.pow(1.1,God));
   document.getElementById('GodCost').innerHTML = prettify(GodCost);
