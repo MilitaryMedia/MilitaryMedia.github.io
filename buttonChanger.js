@@ -548,9 +548,9 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   document.getElementById('cageMultcost').innerHTML = prettify(cageMultnextCost);  //updates the cursor cost for the user
 
   if (typeof TXTsavegame[11] !==  "0") house = parseInt(TXTsavegame[11]);
-  document.getElementById("houseUPG").innerHTML = house;
+  document.getElementById("house").innerHTML = house;
   var housenextCost = Math.floor(500 * Math.pow(1.1,house));       //works out the cost of the next cursor
-  document.getElementById('housecost').innerHTML = prettify(housenextCost);  //updates the cursor cost for the user
+  document.getElementById('houseCost').innerHTML = prettify(housenextCost);  //updates the cursor cost for the user
   if (house >= 1) {document.getElementById('sellhouseAmount').innerHTML = 'You will earn $' + prettify(housenextCost*0.6) + ' clicks.';} else {document.getElementById('sellhouseAmount').innerHTML = 'You do not own any houses!';}
 
   if (typeof TXTsavegame[12] !==  "0") houseMult = parseInt(TXTsavegame[12]);
@@ -558,15 +558,13 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   var houseMultnextCost = Math.floor(1000 * Math.pow(1.3,houseMult));       //works out the cost of the next cursor
   document.getElementById('houseMultcost').innerHTML = prettify(houseMultnextCost);
 
-  
-                        
   if (typeof TXTsavegame[13] !==  "0") God = parseInt(TXTsavegame[13]);
   document.getElementById("GodUPG").innerHTML = God;
   var GodnextCost = Math.floor(100000 * Math.pow(1.1,God));       //works out the cost of the next cursor
-  document.getElementById('Godcost').innerHTML = prettify(GodnextCost);  //updates the cursor cost for the user
+  document.getElementById('GodCost').innerHTML = prettify(GodnextCost);  //updates the cursor cost for the user
   if (God >= 1) {document.getElementById('sellGodAmount').innerHTML = 'You will earn $' + prettify(GodnextCost*0.6) + ' clicks.';} else {document.getElementById('sellGodAmount').innerHTML = 'You do not own any Gods!';}
 
-  if (typeof TXTsavegame[14] !==  "0") GodMult = parseInt(TXTsavegame[131]);
+  if (typeof TXTsavegame[14] !==  "0") GodMult = parseInt(TXTsavegame[14]);
   document.getElementById("GodMultUPG").innerHTML = GodMult;
   var GodMultnextCost = Math.floor(150000 * Math.pow(1.3,GodMult));       //works out the cost of the next cursor
   document.getElementById('GodMultcost').innerHTML = prettify(GodMultnextCost);
