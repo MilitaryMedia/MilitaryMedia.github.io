@@ -468,7 +468,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   if (typeof savegame.God !==  "undefined") God = savegame.God;
   document.getElementById("God").innerHTML = God;
   var GodnextCost = Math.floor(100000 * Math.pow(1.1,God));       //works out the cost of the next cursor
-  document.getElementById('Godcost').innerHTML = prettify(GodnextCost);  //updates the cursor cost for the user
+  document.getElementById('GodCost').innerHTML = prettify(GodnextCost);  //updates the cursor cost for the user
   if (God >= 1) {document.getElementById('sellGodAmount').innerHTML = 'You will earn $' + prettify(GodnextCost*0.6) + ' clicks.';} else {document.getElementById('sellGodAmount').innerHTML = 'You do not own any Gods!';}
 
   if (typeof savegame.GodMult !==  "undefined") GodMult = savegame.GodMult;
