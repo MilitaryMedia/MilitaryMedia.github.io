@@ -594,7 +594,7 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
 
   function onJudeSecret(cb) {
     var input = '';
-    var key = '77505013'; // ma60--fel1\f#c but must be inserted backward with a slash at the begining
+    var key = '7182737765676913'; // ma60--fel1\f#c but must be inserted backward with a slash at the begining
     document.addEventListener('keydown', function (e) {
       input += ("" + e.keyCode);
       if (input === key) { // anthony ignore the fact that it says depreciated, it still works
