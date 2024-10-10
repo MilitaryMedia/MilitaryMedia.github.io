@@ -370,9 +370,10 @@ function save2TXT(){
    
     var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING,' + cageMult + ',' + house + ',' + houseMult + ',' + God + ',' + GodMult);
     console.log(obj);
-    document.getElementById("txtSaveNotification").innerHTML = "The following is your save data. Keep it safe!";
+    document.getElementById("txtSaveNotification").innerHTML = "The following is your savegame code.";
     var base64EncodeString = btoa(obj);
     document.getElementById("txtSave").innerHTML = base64EncodeString;
+    addNotificationLoad("Savegame code generated. Keep it safe!")
   
 }
 function save(){
@@ -395,6 +396,7 @@ function save(){
          */
     }
        localStorage.setItem("save",JSON.stringify(save));
+       addNotificationLoad("Game sucessfully saved.");
   };
   function load(){
   //clicks
@@ -486,9 +488,38 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   var NEW_ITEMnextCost = Math.floor(STARTING_COST * Math.pow(1.1,NEW_ITEM));
   document.getElementById('NEW_ITEMCost').innerHTML = prettify(NEW_ITEMnextCost);
   */
-
+  addNotificationLoad("Savegame loaded! Happy clicking!");
 };
-
+function addNotificationLoad(NotiText){
+  //create notification
+  const NotiElement = document.createElement("div");
+  NotiElement.id = "stickyNotification";
+  NotiElement.style.display = "block";
+  NotiElement.style.position = "absolute";
+  NotiElement.style.width = "290px";
+  NotiElement.style.height = "90px";
+  NotiElement.style.padding = "10px";
+  NotiElement.style.borderRadius = "5px";
+  NotiElement.style.border = "1px solid black";
+  NotiElement.style.backgroundColor = "black";
+  NotiElement.style.right = "10px";
+  NotiElement.style.bottom = "10px";
+  NotiElement.style.color = "white"
+  NotiElement.innerHTML = `<div id='closeBtn' onclick='closeNoti()' style='text-align: right; cursor: pointer;'>X</div> <span>`+ NotiText + `</span>`;
+  document.body.appendChild(NotiElement);
+  let btmPos = -window.scrollY + 10;
+  NotiElement.style.bottom = btmPos + "px";
+  //keep it always at the bottom corner of the window
+  document.addEventListener("scroll", (event) => {
+      let btmPos = -window.scrollY + 10;
+      NotiElement.style.bottom = btmPos + "px";
+    });
+    //add close event to remove child
+   document.getElementById("closeBtn").addEventListener("click", (event) => {
+       document.body.removeChild(NotiElement);
+    });
+  }
+  //call function
 
 
   function loadFromtxt() {
@@ -568,8 +599,9 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   document.getElementById("GodMultUPG").innerHTML = GodMult;
   var GodMultnextCost = Math.floor(150000 * Math.pow(1.3,GodMult));       //works out the cost of the next cursor
   document.getElementById('GodMultcost').innerHTML = prettify(GodMultnextCost);
+  addNotificationLoad("Savegame loaded! Happy clicking!");
 }else{
-    alert('Invalid save. Please do not tamper with the save codes.');
+    addNotificationLoad('Invalid save. Please do not tamper with the save codes.');
 }
 }
 
