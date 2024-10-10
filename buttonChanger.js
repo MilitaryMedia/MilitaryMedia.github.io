@@ -451,7 +451,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
 
 //house
   if (typeof savegame.house !== "undefined") house = savegame.house;
-  document.getElementById("house").innerHTML = house;
+  document.getElementById("house").innerHTML = house + "x";
   var housenextCost = Math.floor(500 * Math.pow(1.1,house));
   document.getElementById('houseCost').innerHTML = prettify(housenextCost);
   if (house >= 1) {document.getElementById('sellhouseAmount').innerHTML = 'You will earn $' + prettify(housenextCost*0.6) + ' clicks.';} else {document.getElementById('sellhouseAmount').innerHTML = 'You do not own any houses!';}
@@ -466,7 +466,7 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   
                             
   if (typeof savegame.God !==  "undefined") God = savegame.God;
-  document.getElementById("God").innerHTML = God;
+  document.getElementById("God").innerHTML = God + "x";
   var GodnextCost = Math.floor(100000 * Math.pow(1.1,God));       //works out the cost of the next cursor
   document.getElementById('GodCost').innerHTML = prettify(GodnextCost);  //updates the cursor cost for the user
   if (God >= 1) {document.getElementById('sellGodAmount').innerHTML = 'You will earn $' + prettify(GodnextCost*0.6) + ' clicks.';} else {document.getElementById('sellGodAmount').innerHTML = 'You do not own any Gods!';}
