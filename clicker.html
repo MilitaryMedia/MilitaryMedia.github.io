@@ -309,6 +309,7 @@ input:checked + .slider:before {
               <button class="tablinks" onclick="openCity(event, 'buy')" id='defaultOpen'>Buy Helpers</button>
               <button class="tablinks" onclick="openCity(event, 'sell')" >Sell Helpers</button>
               <button class="tablinks" onclick="openCity(event, 'UPG')" >Buy Upgrades</button>
+              <button class="tablinks" onclick="openCity(event, 'achievements')">Achievements</button>
               </div>
 
           <div id="buy" class="tabcontent" style="overflow-y:scroll;">  
@@ -386,7 +387,13 @@ input:checked + .slider:before {
                 </button>
           </div>    
                
-            
+                <!-- Achievements content -->
+    <div id="achievements" class="tabcontent">
+      <h2 style="text-align: center;">Achievements</h2>
+      <ul id="achievementList" style="text-align: left;">
+          <li>No achievements yet! Keep clicking!</li>
+      </ul>
+  </div>
             </div><!--column 2-->
         </div>
       </div>
@@ -490,6 +497,20 @@ input:checked + .slider:before {
               tablinks1[i].className = tablinks1[i].className.replace(" active", "");
             }
             document.getElementById(HammyHome).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+
+            function openCity(evt, achievements) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(achievements).style.display = "block";
             evt.currentTarget.className += " active";
             }
             </script>

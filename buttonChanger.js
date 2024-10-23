@@ -36,6 +36,7 @@ var house = 0;
 var houseMult = 1;
 var God = 0;
 var GodMult = 1;
+let achievements = [];
 /* following is part of template just replace "NEW_ITEM" with new item name */
 /*
 var NEW_ITEM = 0;
@@ -49,8 +50,9 @@ function prettify(input){
 
 
 function hamsterclick(input){
-    click = click + input*clickpower;
-    document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks.";
+  click = click + input * clickpower;
+  document.getElementById("clicks").innerHTML = "you are at " + prettify(click) + " clicks.";
+  checkAchievements();  // Check for achievements after each click
 }
 function sellCursor(){
     if(cursors>=1){ 
@@ -320,6 +322,16 @@ function buyNEW_ITEM(){
 */
 
 
+// Update achievements list in UI
+function updateAchievementsUI() {
+  achievementList.innerHTML = '';
+  achievements.forEach(achievement => {
+      let li = document.createElement("li");
+      li.innerText = achievement;
+      achievementList.appendChild(li);
+  });
+}
+
 
 
 
@@ -365,16 +377,14 @@ window.setInterval(function(){
 window.setInterval(function(){
     secretMessageButton1(NEW_ITEM);
     }, TIME_PER_CLICK)
-*/
+*/ 
 function save2TXT(){
    
-    var obj = new String(click + ',' + cursors + ',' + wheel + ',' + Cage + ',' + clickpower + ',CHECK!?,' + clickpowerUPGlvl + ',' + cursorMult + ',' + wheelMult + ',CHECKSTRING,' + cageMult + ',' + house + ',' + houseMult + ',' + God + ',' + GodMult);
-    console.log(obj);
-    document.getElementById("txtSaveNotification").innerHTML = "The following is your savegame code.";
-    var base64EncodeString = btoa(obj);
-    document.getElementById("txtSave").innerHTML = base64EncodeString;
-    addNotificationLoad("Savegame code generated. Keep it safe!")
-  
+  var obj = `${click},${cursors},${wheel},${Cage},${clickpower},CHECK!?,${clickpowerUPGlvl},${cursorMult},${wheelMult},CHECKSTRING,${cageMult},${house},${houseMult},${God},${GodMult},${achievements.join('|')}`;
+  var base64EncodeString = btoa(obj);
+  document.getElementById("txtSaveNotification").innerHTML = "The following is your savegame code.";
+  document.getElementById("txtSave").innerHTML = base64EncodeString;
+  addNotificationLoad("Savegame code generated. Keep it safe!");
 }
 function save(){
     var save = {
@@ -390,7 +400,8 @@ function save(){
          house:house,
          houseMult:houseMult,
          God:God,
-         GodMult:GodMult// ADD COMMA WHEN ADD NEW ITEM BELOW
+         GodMult:GodMult,
+         achievements: achievements// ADD COMMA WHEN ADD NEW ITEM BELOW
          /*
          NEW_ITEM:NEW_ITEM 
          */
@@ -478,7 +489,8 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   var GodMultnextCost = Math.floor(150000 * Math.pow(1.3,GodMult));       //works out the cost of the next cursor
   document.getElementById('GodMultcost').innerHTML = prettify(GodMultnextCost);
    
-  
+  if (typeof savegame.achievements !== "undefined") achievements = savegame.achievements;
+    updateAchievementsUI();  // Update the UI with loaded achievements
 
   /* PART OF TEMPLATE, REPLACE "NEW_ITEM" WITH NEW ITEM NAME AND "STARTING_COST" WITH STARTING COST*/
   /*
@@ -490,36 +502,46 @@ if (typeof savegame.wheel !== "undefined") wheel = savegame.wheel;
   */
   addNotificationLoad("Savegame loaded! Happy clicking!");
 };
-function addNotificationLoad(NotiText){
-  //create notification
-  const NotiElement = document.createElement("div");
-  NotiElement.id = "stickyNotification";
-  NotiElement.style.display = "block";
-  NotiElement.style.position = "absolute";
-  NotiElement.style.width = "290px";
-  NotiElement.style.height = "90px";
-  NotiElement.style.padding = "10px";
-  NotiElement.style.borderRadius = "5px";
-  NotiElement.style.border = "1px solid black";
-  NotiElement.style.backgroundColor = "black";
-  NotiElement.style.right = "10px";
-  NotiElement.style.bottom = "10px";
-  NotiElement.style.color = "white"
-  NotiElement.innerHTML = `<div id='closeBtn' onclick='closeNoti()' style='text-align: right; cursor: pointer;'>X</div> <span>`+ NotiText + `</span>`;
-  document.body.appendChild(NotiElement);
-  let btmPos = -window.scrollY + 10;
-  NotiElement.style.bottom = btmPos + "px";
-  //keep it always at the bottom corner of the window
-  document.addEventListener("scroll", (event) => {
-      let btmPos = -window.scrollY + 10;
-      NotiElement.style.bottom = btmPos + "px";
+function addNotificationLoad(NotiText) {
+    // Generate a unique ID for each notification
+    const uniqueId = `notification_${Date.now()}`;
+    
+    // Create the notification element
+    const NotiElement = document.createElement("div");
+    NotiElement.id = uniqueId; // Set the unique ID
+    NotiElement.style.display = "block";
+    NotiElement.style.position = "absolute";
+    NotiElement.style.width = "290px";
+    NotiElement.style.height = "90px";
+    NotiElement.style.padding = "10px";
+    NotiElement.style.borderRadius = "5px";
+    NotiElement.style.border = "1px solid black";
+    NotiElement.style.backgroundColor = "black";
+    NotiElement.style.right = "10px";
+    NotiElement.style.bottom = "10px";
+    NotiElement.style.color = "white";
+    NotiElement.innerHTML = `<div style="text-align: right; cursor: pointer;" onclick="closeNotification('${uniqueId}')">X</div> <span>${NotiText}</span>`;
+
+    document.body.appendChild(NotiElement);
+
+    // Keep the notification at the bottom corner of the window even when scrolling
+    let btmPos = -window.scrollY + 10;
+    NotiElement.style.bottom = btmPos + "px";
+
+    // Adjust position on scroll
+    document.addEventListener("scroll", function () {
+        let btmPos = -window.scrollY + 10;
+        NotiElement.style.bottom = btmPos + "px";
     });
-    //add close event to remove child
-   document.getElementById("closeBtn").addEventListener("click", (event) => {
-       document.body.removeChild(NotiElement);
-    });
-  }
-  //call function
+}
+
+// Function to close the notification with a specific ID
+function closeNotification(id) {
+    const notification = document.getElementById(id);
+    if (notification) {
+        document.body.removeChild(notification);
+    }
+}
 
 
   function loadFromtxt() {
@@ -599,6 +621,11 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
   document.getElementById("GodMultUPG").innerHTML = GodMult;
   var GodMultnextCost = Math.floor(150000 * Math.pow(1.3,GodMult));       //works out the cost of the next cursor
   document.getElementById('GodMultcost').innerHTML = prettify(GodMultnextCost);
+
+  achievements = TXTsavegame[15] ? TXTsavegame[15].split('|') : [];
+        updateAchievementsUI();  // Update the UI with loaded achievements
+
+
   addNotificationLoad("Savegame loaded! Happy clicking!");
 }else{
     addNotificationLoad('Invalid save. Please do not tamper with the save codes.');
@@ -606,7 +633,61 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
 }
 
 
-  
+function checkAchievements() {
+  if (click >= 100 && !achievements.includes("100 Clicks")) {
+      addAchievement("100 Clicks");
+  }
+  if (click >= 1000 && !achievements.includes("1,000 Clicks")) {
+      addAchievement("1,000 Clicks");
+  }
+  if (cursors >= 10 && !achievements.includes("10 Clickers")) {
+      addAchievement("10 Clickers");
+  }
+  if (wheel >= 1 && !achievements.includes("First Wheel Purchased")) {
+      addAchievement("First Wheel Purchased");
+  }
+  if (Cage >= 1 && !achievements.includes("First Cage Purchased")) {
+    addAchievement("First Cage Purchased");
+}
+if (wheel >= 1 && !achievements.includes("First Wheel Purchased")) {
+  addAchievement("First Wheel Purchased");
+}
+  if (wheel >= 5 && !achievements.includes("5 Wheels")) {
+    addAchievement("5 Wheels");
+}
+  if (God >= 1 && !achievements.includes("First God Purchased")) {
+      addAchievement("First God Purchased");
+  }
+  if (cursors + wheel + Cage + house + God >= 100 && !achievements.includes("100 Helpers Owned")) {
+    addAchievement("100 Helpers Owned");
+}
+if (cheat = 1 && !achievements.includes("Cheated Hampters have sad faces!")) {
+  addAchievement("Cheated Hampters have sad faces!");
+}
+}
+
+// Add an achievement and show it in the UI
+function addAchievement(name) {
+  if (!achievements.includes(name)) {
+      achievements.push(name);
+
+      let li = document.createElement("li");
+      li.innerText = name;
+      achievementList.appendChild(li);
+
+      addNotificationLoad("Achievement unlocked: " + name + "!");
+  }
+}
+
+
+
+
+
+
+
+window.setInterval(checkAchievements, 1000);
+
+
   function onClickCode(cb) {
     var input = '';
     var key = '13161316';
@@ -649,10 +730,10 @@ if (typeof TXTsavegame[2] !==  "0") wheel = parseInt(TXTsavegame[2]);
       input1 = ("" + e.keyCode);
     });
   }
-  
+  var cheat = 0;
   onOldSecretCode(function () {alert("The code got leaked, so it got changed. Sry to those people who are now suffering from the concequences, but ur not getting the code back.");})
 
-  onJudeSecret(function () {document.getElementById('sideNAV').style.display = 'block';})
+  onJudeSecret(function () {document.getElementById('sideNAV').style.display = 'block'; var cheat = 1;})
 
 
 function cheatAddCursor(amount) {
