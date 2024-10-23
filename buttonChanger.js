@@ -663,7 +663,7 @@ if (wheel >= 1 && !achievements.includes("First Wheel Purchased")) {
 }
 if (cheat = 1 && !achievements.includes("Cheated Hampters have sad faces!")) {
   addAchievement("Cheated Hampters have sad faces!");
-}
+} 
 }
 
 // Add an achievement and show it in the UI
