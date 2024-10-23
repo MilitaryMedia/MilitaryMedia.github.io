@@ -661,9 +661,9 @@ if (wheel >= 1 && !achievements.includes("First Wheel Purchased")) {
   if (cursors + wheel + Cage + house + God >= 100 && !achievements.includes("100 Helpers Owned")) {
     addAchievement("100 Helpers Owned");
 }
-if (cheat = 2 && !achievements.includes("Cheated Hampters have sad faces!")) {
+/*if (cheat = 2 && !achievements.includes("Cheated Hampters have sad faces!")) {
   addAchievement("Cheated Hampters have sad faces!");
-} 
+} */
 }
 
 // Add an achievement and show it in the UI
