@@ -661,7 +661,7 @@ if (wheel >= 1 && !achievements.includes("First Wheel Purchased")) {
   if (cursors + wheel + Cage + house + God >= 100 && !achievements.includes("100 Helpers Owned")) {
     addAchievement("100 Helpers Owned");
 }
-if (cheat = 1 && !achievements.includes("Cheated Hampters have sad faces!")) {
+if (cheat = 2 && !achievements.includes("Cheated Hampters have sad faces!")) {
   addAchievement("Cheated Hampters have sad faces!");
 } 
 }
@@ -733,7 +733,7 @@ window.setInterval(checkAchievements, 1000);
   var cheat = 0;
   onOldSecretCode(function () {alert("The code got leaked, so it got changed. Sry to those people who are now suffering from the concequences, but ur not getting the code back.");})
 
-  onJudeSecret(function () {document.getElementById('sideNAV').style.display = 'block'; var cheat = 1;})
+  onJudeSecret(function () {document.getElementById('sideNAV').style.display = 'block';  cheat = 2;})
 
 
 function cheatAddCursor(amount) {
