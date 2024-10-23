@@ -671,6 +671,10 @@ function addAchievement(name) {
   if (!achievements.includes(name)) {
       achievements.push(name);
 
+      let noAchievementsMessage = document.querySelector('#achievementList li.no-achievements');
+      if (noAchievementsMessage) {
+          achievementList.removeChild(noAchievementsMessage);
+      }
       let li = document.createElement("li");
       li.innerText = name;
       achievementList.appendChild(li);
