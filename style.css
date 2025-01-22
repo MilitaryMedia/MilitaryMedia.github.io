@@ -5,8 +5,9 @@ body{
 header{
     padding: 5px;
     /*The main color theme for the website*/
-    /* background-color: rgb(255, 0, 0); */
-    background-color: rgb(86, 199, 219);
+    background-color: rgb(255, 0, 0);
+    /*Winter color theme for the website*/
+    /* background-color: rgb(86, 199, 219); */
     font-family: 'Courier New', Courier, monospace;
     font-size: 25px;
     text-shadow: 0 0 5px #000000, 0 0 6px #000000;
@@ -20,8 +21,10 @@ header{
 nav{
     padding: 10px;
 	margin: 10px;
-    /* background-color: rgb(185, 0, 0); */
-    background-color: rgb(86, 199, 219);
+    /*The main color theme for the website*/
+    background-color: rgb(185, 0, 0);
+    /*Winter color theme for the website*/
+    /* background-color: rgb(86, 199, 219); */
     color: white;
     border-radius: 20px;
 }
@@ -54,8 +57,10 @@ details {
     }
 
     summary {
-      /* background-color: rgb(185, 0, 0); */
-      background-color: rgb(86, 199, 219);
+        /*The main color theme for the website*/
+      background-color: rgb(185, 0, 0);
+      /*Winter color theme for the website*/
+      /* background-color: rgb(86, 199, 219); */
       padding: 10px;
       cursor: pointer;
     font-family: 'Courier New', Courier, monospace;
